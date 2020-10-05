@@ -8,8 +8,7 @@ sudo bash [NAZWA_SKRYPTU]
 ```
 
 ## Użycie (Windows 8/10)
-Poniższe polecenia należy *koniecznie* wykonać w powłoce **PowerShell** z *podniesionymi uprawnieniami*.  
-Dostęp do powłoki **PowerShell** z podniesionymi uprawnieniami można uzyskać uruchamiając ją jako administrator.
+Poniższe polecenia należy *koniecznie* wykonać w powłoce **PowerShell** z podniesionymi uprawnieniami (aka uruchomić ją jako administrator).  
 
 ```powershell
 Invoke-WebRequest https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_SKRYPTU] -OutFile install.ps1
