@@ -1,13 +1,13 @@
 # inz-scripts
-Skrypty do inżynierki
+Zestaw skryptów pozwalających na automatyczną konfigurację 
 
-## Użycie (Maszyny wirtualne z systemem Linux)
+## Użycie (GNU/Linux)
 ```bash
 curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_SKRYPTU]
 sudo bash [NAZWA_SKRYPTU]
 ```
 
-## Użycie (Maszyny wirtualne z systemem Windows)
+## Użycie (Windows 8/10)
 Poniższe polecenia należy *koniecznie* wykonać w powłoce **PowerShell** z *podniesionymi uprawnieniami*.  
 Dostęp do powłoki **PowerShell** z podniesionymi uprawnieniami można uzyskać uruchamiając ją jako administrator.
 
