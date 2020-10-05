@@ -1,5 +1,5 @@
 # inz-scripts
-Zestaw skryptów pozwalających na automatyczną konfigurację 
+Zestaw skryptów pozwalających na automatyczną konfigurację maszyny wirtualnej do laboratorium.
 
 # Użycie
 ## Systemy GNU/Linux
