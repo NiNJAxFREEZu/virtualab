@@ -12,6 +12,6 @@ Poniższe polecenia należy *koniecznie* wykonać w powłoce **PowerShell** z *p
 Dostęp do powłoki **PowerShell** z podniesionymi uprawnieniami można uzyskać uruchamiając ją jako administrator.
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_SKRYPTU] -OutFile [NAZWA_NOWEGO_PLIKU]
-sudo bash [NAZWA_NOWEGO_PLIKU]
+Invoke-WebRequest https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_SKRYPTU] -OutFile install.ps1
+.\install.ps1
 ```
