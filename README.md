@@ -12,6 +12,6 @@ Poniższe polecenia należy *koniecznie* wykonać w powłoce **PowerShell** z *p
 Dostęp do powłoki **PowerShell** z podniesionymi uprawnieniami można uzyskać uruchamiając ją jako administrator.
 
 ```powershell
-curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_SKRYPTU]
-sudo bash [NAZWA_SKRYPTU]
+Invoke-WebRequest https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_SKRYPTU] -OutFile [NAZWA_NOWEGO_PLIKU]
+sudo bash [NAZWA_NOWEGO_PLIKU]
 ```
