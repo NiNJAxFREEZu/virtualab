@@ -231,6 +231,7 @@ $nupkg = Join-Path $chocoPkgDir 'chocolatey.nupkg'
 if (![System.IO.Directory]::Exists($chocoPkgDir)) { [System.IO.Directory]::CreateDirectory($chocoPkgDir); }
 Copy-Item "$file" "$nupkg" -Force -ErrorAction SilentlyContinue
 
-echo "Chocolatey was succesfully installed, installing additional software..."
 # Installing python and pycharm using chocolatey package manager
-choco install python pycharm-community
+choco install python pycharm-community -y
+
+echo "Laboratorium WTI - środowisko zostało skonfigurowane!"
