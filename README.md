@@ -5,6 +5,7 @@ Zestaw skryptów pozwalających na automatyczną konfigurację maszyny wirtualne
 ## Systemy GNU/Linux
 ```bash
 curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_SKRYPTU]
+
 sudo bash [NAZWA_SKRYPTU]
 ```
 
@@ -13,5 +14,6 @@ Poniższe polecenia należy *koniecznie* wykonać w powłoce **PowerShell** z po
 
 ```powershell
 Invoke-WebRequest https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_SKRYPTU] -OutFile install.ps1
+
 .\install.ps1
 ```
