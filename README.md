@@ -8,11 +8,6 @@ curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_
 
 sudo bash [NAZWA_SKRYPTU]
 ```
-###Montowanie dysku
-```bash
-curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/dysk_ubuntu.sh
-sudo bash dysk_ubuntu.sh [LOGIN] [PASSWORD]
-```
 
 
 ## Systemy Windows
@@ -24,4 +19,9 @@ Invoke-WebRequest https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/mai
 .\install.ps1
 ```
 
-
+#Montowanie dysku
+## Systemy GNU/Linux
+```bash
+curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/dysk_ubuntu.sh
+sudo bash dysk_ubuntu.sh [LOGIN] [PASSWORD]
+```
