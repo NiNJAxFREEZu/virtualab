@@ -17,7 +17,6 @@ Poniższe polecenia należy *koniecznie* wykonać w powłoce **PowerShell** z po
 ```powershell
 Set-ExecutionPolicy RemoteSigned
 ```
-Dotyczy to w szczególności systemów w wersji *Home*.
 
 2. Następnie należy pobrać i uruchomić wybrany skrypt z repozytorium:
 ```powershell
