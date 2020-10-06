@@ -22,6 +22,5 @@ Invoke-WebRequest https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/mai
 # Montowanie dysku
 ## Systemy GNU/Linux
 ```bash
-curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/dysk_ubuntu.sh
 sudo bash dysk_ubuntu.sh [LOGIN] [PASSWORD]
 ```
