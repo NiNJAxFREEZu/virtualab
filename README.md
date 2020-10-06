@@ -19,7 +19,7 @@ Invoke-WebRequest https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/mai
 .\install.ps1
 ```
 
-#Montowanie dysku
+# Montowanie dysku
 ## Systemy GNU/Linux
 ```bash
 curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/dysk_ubuntu.sh
