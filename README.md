@@ -8,6 +8,12 @@ curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_
 
 sudo bash [NAZWA_SKRYPTU]
 ```
+###Montowanie dysku
+```bash
+curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/dysk_ubuntu.sh
+sudo bash dysk_ubuntu.sh [LOGIN] [PASSWORD]
+```
+
 
 ## Systemy Windows
 Poniższe polecenia należy *koniecznie* wykonać w powłoce **PowerShell** z podniesionymi uprawnieniami (**aka** uruchomić ją jako administrator).  
@@ -17,3 +23,5 @@ Invoke-WebRequest https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/mai
 
 .\install.ps1
 ```
+
+
