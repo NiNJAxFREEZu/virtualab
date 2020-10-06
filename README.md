@@ -3,7 +3,7 @@ Zestaw skryptów pozwalających na automatyczną konfigurację maszyny wirtualne
 
 # Użycie
 ## Systemy GNU/Linux
-```bash
+```sh
 curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_SKRYPTU]
 
 sudo bash [NAZWA_SKRYPTU]
