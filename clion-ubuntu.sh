@@ -1,7 +1,7 @@
 #!/bin/sh
 
-sudo apt update
-sudo apt install build-essential
+sudo apt update --yes
+sudo apt install build-essential --yes
 sudo snap install clion --classic
 
 echo "Clion - środowisko zostało skonfigurowane!"
