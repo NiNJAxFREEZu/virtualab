@@ -4,9 +4,9 @@ Zestaw skryptów pozwalających na automatyczną konfigurację maszyny wirtualne
 # Użycie
 ## Systemy GNU/Linux
 ```shell
-curl https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_SKRYPTU] > install.sh
+$ curl https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/[NAZWA_SKRYPTU] > install.sh
 
-sudo bash install.sh
+$ sudo bash install.sh
 ```
 
 
