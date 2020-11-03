@@ -1,7 +1,6 @@
-import os
 import time
 from master.server import Sender
-from master.server_thread import ThreadedListener
+from master.server_thread import ThreadedListener , listen
 
 
 def title_bar():
@@ -19,16 +18,21 @@ def user_choice():
 if __name__ == '__main__':
     title_bar()
 
-    s = ThreadedListener()
+    s = ThreadedListener(target=listen)
     s.start()
-    s.start_listen()
 
     sender = Sender()
     sender.set_broadcast_ip()
+
     choice = ''
     while choice != 'q':
-        message = str(input("Message to send: ")).encode("utf-8")
-        sender.send_broadcast_message(message)
-        time.sleep(1)
-        input("Press q to quit or other to continue ")
+        choice = user_choice()
+        if choice == "1":
+            message = str(input("Message to send: ")).encode("utf-8")
+            sender.send_broadcast_message(message)
+            time.sleep(1)
 
+    s.kill()
+    s.join()
+    if not s.is_alive():
+        print("Stopped listening for presence")
