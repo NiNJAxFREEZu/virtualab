@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# THIS SCRIPT HAS TO BE EXECUTED BY THE TARGET HOME USER.
+# THIS SCRIPT HAS TO BE EXECUTED BY ROOT.
 # Script installs all of virt-lab modules
 
 if [ $(whoami) != root ]
