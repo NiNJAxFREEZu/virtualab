@@ -14,6 +14,7 @@ apt update || dpkg --configure -a
 apt install python python3-pip git libnotify-bin
 
 # installing python dependencies
+pip install pyqt5
 
 # creating directory for storing text chat app data
 # TODO - creating that directory in one script that installs all dependencies
