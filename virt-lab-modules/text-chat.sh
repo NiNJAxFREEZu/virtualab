@@ -16,5 +16,4 @@ mkdir $HOME/.virt-lab-modules
 git clone https://github.com/wranidlo/broadcast_sender_receiver $HOME/.virt-lab-modules
 
 # launching text-chat receiver
-cd $HOME/.virt-lab-modules
-nohup python3 student_main.py &
+nohup python $HOME/.virt-lab-modules/student_main.py &
