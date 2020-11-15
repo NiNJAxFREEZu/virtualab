@@ -13,13 +13,14 @@ apt update || dpkg --configure -a
 # TODO - one script to install all modules dependencies
 apt install python python3-pip git libnotify-bin
 
-# installing python dependencies
-pip install pyqt5
 
 # creating directory for storing text chat app data
 # TODO - creating that directory in one script that installs all dependencies
 mkdir $HOME/.virt-lab-modules
 git clone https://github.com/wranidlo/broadcast_sender_receiver $HOME/.virt-lab-modules
 
+# installing python dependencies
+pip install pyqt5 -r $HOME/.virt-lab-modules/requirements.txt
+
 # launching text-chat receiver
-nohup python $HOME/.virt-lab-modules/student_main.py &
+nohup python3 $HOME/.virt-lab-modules/student_main.py &
