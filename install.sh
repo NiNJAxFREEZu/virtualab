@@ -14,8 +14,8 @@ fi
 # Installing curl
 apt install curl
 
-# Setting the enviromental variables for installing modules as root
-# VIRT-LAB-HOME = 
+# Creating directory for storing modules data
+mkdir /etc/virt-lab
 
 # Downloading install scripts
 curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/virt-lab-modules/vm-communicator.sh
