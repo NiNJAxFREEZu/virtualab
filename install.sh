@@ -3,7 +3,7 @@
 # Functions declaraction
 echoerr() { echo "$@" 1>&2; }
 
-# Script installs all of virt-lab modules and launches them.
+# Script installs all of VirtuaLab modules and launches them.
 
 # THIS SCRIPT HAS TO BE EXECUTED BY ROOT.
 # Ubuntu auto-updates has to be disabled in order to guarantee a successfull installation
@@ -49,5 +49,5 @@ echo -ne "\tCleaning up..."
 rm vm-communicator.sh
 echo " DONE"
 
-echo -e "\nvmlab has been installed succesfully!"
+echo -e "\nVirtuaLab has been installed succesfully!"
 exit 0
