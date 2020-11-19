@@ -25,7 +25,7 @@ echo " DONE"
 mkdir /etc/virt-lab
 
 # Downloading install scripts
-echo -n -e "\tPulling modules installation scripts..."
+echo -ne "\tPulling modules installation scripts..."
 curl -LOs https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/virt-lab-modules/vm-communicator.sh || echoerr "Error while trying to pull vm-communicator installation script."
 echo " DONE"
 
@@ -33,13 +33,13 @@ echo " DONE"
 echo -e "\n***Installing modules***\n"
 
 # VM-communicator
-echo -n -e "\tInstalling vm-communicator..."
+echo -ne "\tInstalling vm-communicator..."
 chmod +x vm-communicator.sh
 ./vm-communicator.sh
 echo " DONE"
 
 ### Cleaning up, removing dowloaded scripts
-echo -n -e "\tCleaning up..."
+echo -ne "\tCleaning up..."
 rm vm-communicator.sh
 echo " DONE"
 
