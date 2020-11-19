@@ -14,34 +14,34 @@ if [ $(whoami) != root ]; then
     exit 1
 fi
 
-echo "Installing vmlab"
-echo "----------------"
+echo -e "\n***Installing vmlab***\n"
 
-# Installing curl and git
+# Installing curl and git - needed to pull the rest of the dependencies and modules
+echo -n "Installing curl and git..."
 apt-get install curl git --yes > /dev/null || echoerr "Error while trying to install a package - apt package manager is currently being used by another process."
+echo " DONE"
 
 # Creating directory for storing modules data
 mkdir /etc/virt-lab
 
 # Downloading install scripts
-echo -n "Pulling modules installation scripts..."
+echo -n -e "\tPulling modules installation scripts..."
 curl -LOs https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/virt-lab-modules/vm-communicator.sh || echoerr "Error while trying to pull vm-communicator installation script."
 echo " DONE"
 
 ### Installing modules
-echo "Installing modules"
-echo "------------------"
+echo -e "\n***Installing modules***\n"
 
 # VM-communicator
-echo -n "Installing vm-communicator..."
+echo -n -e "\tInstalling vm-communicator..."
 chmod +x vm-communicator.sh
 ./vm-communicator.sh
 echo " DONE"
 
 ### Cleaning up, removing dowloaded scripts
-echo -n "Cleaning up..."
+echo -n -e "\tCleaning up..."
 rm vm-communicator.sh
 echo " DONE"
 
-echo "vmlab has been installed succesfully!"
+echo -e "\nvmlab has been installed succesfully!"
 exit 0
