@@ -1,16 +1,13 @@
 #!/bin/sh
 
+# Functions declaration
+echoerr() { echo "$@" 1>&2; }
+
 # Script installs communication module used to send text messages across VM's, 
 # checking attendance and collecting information about students activities on VM's.
 
-# removing dpkg-locks for apt-get in case Ubuntu autoupdates at the moment.
-rm /var/lib/dpkg/lock*
-
-# if by very unfortunate chance DPKG vas running while removing the lock, we have to autoconfigure it (takes several minutes)
-apt update || dpkg --configure -a
-
 # installing dependencies 
-apt install python python3-pip git libnotify-bin
+apt install python python3-pip git libnotify-bin || echoerr "Error while trying to install a package - apt package manager is currently being used by another process."; exit 1
 
 # cloning module's git repository
 git clone https://github.com/wranidlo/broadcast_sender_receiver /etc/virt-lab/vm-comm

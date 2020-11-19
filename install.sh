@@ -6,8 +6,7 @@ echoerr() { echo "$@" 1>&2; }
 # THIS SCRIPT HAS TO BE EXECUTED BY ROOT.
 # Script installs all of virt-lab modules
 
-if [ $(whoami) != root ]
-then
+if [ $(whoami) != root ]; then
     echoerr "This script has to be executed by root. Use su or sudo to run that script."
     exit 1
 fi
