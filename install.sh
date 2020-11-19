@@ -28,7 +28,7 @@ apt-get install curl git --yes > /dev/null || echoerr "Error while trying to ins
 echo " DONE"
 
 # Creating directory for storing modules data
-mkdir /etc/virt-lab
+mkdir /etc/virtualab
 
 # Downloading install scripts
 echo -ne "\tPulling modules installation scripts..."
