@@ -17,8 +17,8 @@ fi
 # Ubuntu auto-updates has to be disabled in order to guarantee a successfull installation
 # Make sure to not run any updates in the background as this script uses apt package manager
 
-# Installing curl
-apt install curl --quiet --yes || echoerr "Error while trying to install a package - apt package manager is currently being used by another process."
+# Installing curl and git
+apt-get install curl git --yes > /dev/null || echoerr "Error while trying to install a package - apt package manager is currently being used by another process."
 
 # Creating directory for storing modules data
 mkdir /etc/virt-lab
@@ -38,4 +38,9 @@ chmod +x vm-communicator.sh
 echo " DONE"
 
 # Cleaning up, removing dowloaded scripts
+echo -n "Cleaning up..."
 rm vm-communicator.sh
+echo " DONE"
+
+echo "vmlab has been installed succesfully!"
+exit 0
