@@ -15,7 +15,7 @@ fi
 # Make sure to not run any updates in the background as this script uses apt package manager
 
 # Installing curl
-apt install curl || echoerr "Error while trying to install a package - apt package manager is currently being used by another process."; exit 1
+apt install curl || echoerr "Error while trying to install a package - apt package manager is currently being used by another process."
 
 # Creating directory for storing modules data
 mkdir /etc/virt-lab
