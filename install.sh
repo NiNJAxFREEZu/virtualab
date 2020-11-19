@@ -24,7 +24,7 @@ mkdir /etc/virt-lab
 curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/virt-lab-modules/vm-communicator.sh
 
 # Installing modules
-./vm-communicator
+./vm-communicator.sh
 
 # Cleaning up, removing dowloaded scripts
-rm vm-communicator
+rm vm-communicator.sh
