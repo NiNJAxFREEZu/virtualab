@@ -14,10 +14,16 @@ if [ $(whoami) != root ]; then
     exit 1
 fi
 
-echo -e "\n***Installing vmlab***\n"
+clear
+echo -e "██╗░░░██╗██╗██████╗░████████╗██╗░░░██╗░█████╗░██╗░░░░░░█████╗░██████╗░
+██║░░░██║██║██╔══██╗╚══██╔══╝██║░░░██║██╔══██╗██║░░░░░██╔══██╗██╔══██╗
+╚██╗░██╔╝██║██████╔╝░░░██║░░░██║░░░██║███████║██║░░░░░███████║██████╦╝
+░╚████╔╝░██║██╔══██╗░░░██║░░░██║░░░██║██╔══██║██║░░░░░██╔══██║██╔══██╗
+░░╚██╔╝░░██║██║░░██║░░░██║░░░╚██████╔╝██║░░██║███████╗██║░░██║██████╦╝
+░░░╚═╝░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░\n"
 
 # Installing curl and git - needed to pull the rest of the dependencies and modules
-echo -n "\tInstalling curl and git..."
+echo -ne "\tInstalling curl and git..."
 apt-get install curl git --yes > /dev/null || echoerr "Error while trying to install a package - apt package manager is currently being used by another process."
 echo " DONE"
 
