@@ -17,7 +17,7 @@ fi
 echo -e "\n***Installing vmlab***\n"
 
 # Installing curl and git - needed to pull the rest of the dependencies and modules
-echo -n "Installing curl and git..."
+echo -n "\tInstalling curl and git..."
 apt-get install curl git --yes > /dev/null || echoerr "Error while trying to install a package - apt package manager is currently being used by another process."
 echo " DONE"
 

@@ -15,7 +15,7 @@ chmod -R 777 /etc/virt-lab/vm-communicator/
 cd /etc/virt-lab/vm-communicator
 
 # installing python dependencies
-pip3 install pyqt5 -r requirements.txt --quiet --no-input
+pip3 install --no-input -r requirements.txt --quiet 
 
 # launching text-chat receiver
 nohup python3 student_main.py &
