@@ -25,7 +25,7 @@ mkdir /etc/virt-lab
 
 # Downloading install scripts
 echo -n "Pulling modules installation scripts..."
-curl -LO https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/virt-lab-modules/vm-communicator.sh > /dev/null || echoerr "Error while trying to pull vm-communicator installation script."
+curl -LOs https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/virt-lab-modules/vm-communicator.sh || echoerr "Error while trying to pull vm-communicator installation script."
 echo " DONE"
 
 ### Installing modules
