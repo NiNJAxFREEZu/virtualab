@@ -7,7 +7,7 @@ echoerr() { echo "$@" 1>&2; }
 # checking attendance and collecting information about students activities on VM's.
 
 # installing dependencies 
-apt install python python3-pip git libnotify-bin || echoerr "Error while trying to install a package - apt package manager is currently being used by another process."
+apt install python python3-pip git libnotify-bin --quiet --yes || echoerr "Error while trying to install a package - apt package manager is currently being used by another process."
 
 # cloning module's git repository
 git clone https://github.com/wranidlo/broadcast_sender_receiver /etc/virt-lab/vm-comm
@@ -15,7 +15,7 @@ chmod -R 777 /etc/virt-lab/vm-comm/
 cd /etc/virt-lab/vm-comm
 
 # installing python dependencies
-pip install pyqt5 -r requirements.txt
+pip install pyqt5 -r requirements.txt --quiet --no-input
 
 # launching text-chat receiver
 nohup python3 student_main.py &
