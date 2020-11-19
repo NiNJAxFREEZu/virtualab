@@ -10,12 +10,12 @@ echoerr() { echo "$@" 1>&2; }
 apt-get install python python3-pip git libnotify-bin --yes > /dev/null || echoerr "Error while trying to install a package - apt package manager is currently being used by another process."
 
 # cloning module's git repository
-git clone https://github.com/wranidlo/broadcast_sender_receiver /etc/virt-lab/vm-comm
-chmod -R 777 /etc/virt-lab/vm-comm/
-cd /etc/virt-lab/vm-comm
+git clone https://github.com/wranidlo/broadcast_sender_receiver /etc/virt-lab/vm-communicator > /dev/null || echoerr "Error while trying to pull git repository for vm-communicator."
+chmod -R 777 /etc/virt-lab/vm-communicator/
+cd /etc/virt-lab/vm-communicator
 
 # installing python dependencies
-pip install pyqt5 -r requirements.txt --quiet --no-input
+pip3 install pyqt5 -r requirements.txt --quiet --no-input
 
 # launching text-chat receiver
 nohup python3 student_main.py &
