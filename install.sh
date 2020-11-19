@@ -3,19 +3,19 @@
 # Functions declaraction
 echoerr() { echo "$@" 1>&2; }
 
-# THIS SCRIPT HAS TO BE EXECUTED BY ROOT.
-# Script installs all of virt-lab modules
+# Script installs all of virt-lab modules and launches them.
 
-echo "Installing vmlab"
-echo "----------------"
+# THIS SCRIPT HAS TO BE EXECUTED BY ROOT.
+# Ubuntu auto-updates has to be disabled in order to guarantee a successfull installation
+# Make sure to not run any updates in the background as this script uses apt package manager
 
 if [ $(whoami) != root ]; then
     echoerr "This script has to be executed by root. Use su or sudo to run that script."
     exit 1
 fi
 
-# Ubuntu auto-updates has to be disabled in order to guarantee a successfull installation
-# Make sure to not run any updates in the background as this script uses apt package manager
+echo "Installing vmlab"
+echo "----------------"
 
 # Installing curl and git
 apt-get install curl git --yes > /dev/null || echoerr "Error while trying to install a package - apt package manager is currently being used by another process."
