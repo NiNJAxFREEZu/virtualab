@@ -14,7 +14,7 @@ git clone https://github.com/wranidlo/broadcast_sender_receiver /etc/virtualab/v
 chmod -R 777 /etc/virtualab/vm-communicator/
 
 # installing python dependencies
-pip3 install --no-input -r requirements.txt --quiet 
+pip3 install --no-input -r /etc/virtualab/vm-communicator/requirements.txt --quiet 
 
 # launching text-chat receiver
 cd /etc/virtualab/vm-communicator
