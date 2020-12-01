@@ -16,9 +16,12 @@ chmod -R 777 /etc/virtualab/vm-communicator/
 # installing python dependencies
 pip3 install --no-input -r /etc/virtualab/vm-communicator/requirements.txt --quiet 
 
-# launching text-chat receiver service
 cd /etc/virtualab/vm-communicator
 cp vm-communicator.service /etc/systemd/system/
 
+# creating .env file for systemd service
+touch /etc/systemd/system/vm-communicator.env
+
+# launching text-chat receiver service
 systemctl enable vm-communicator.service || echoerr "E: systemd was unable to enable vm-communicator service."
 systemctl start vm-communicator.service || echoerr "E: systemd was unable to start vm-communicator service."
