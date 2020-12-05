@@ -7,7 +7,7 @@ echoerr() { echo "$@" 1>&2; }
 # checking attendance and collecting information about students activities on VM's.
 
 # installing dependencies 
-apt-get install python python3-pip git libnotify-bin --yes || echoerr "E: apt cannot install a packages right now - apt package manager is currently being used by another process."
+apt-get install python python3-pip git libnotify-bin --yes || echoerr "E: Error while trying to install packages with apt-get. Check if apt-get is not running in the background."
 
 # cloning module's git repository
 git clone https://github.com/wranidlo/broadcast_sender_receiver /etc/virtualab/vm-communicator --quiet || echoerr "E: git was unable to pull the repository for vm-communicator."
@@ -20,7 +20,7 @@ cd /etc/virtualab/vm-communicator
 cp vm-communicator.service /etc/systemd/system/
 
 # creating .env file for systemd service
-touch /etc/systemd/system/vm-communicator.env
+touch /etc/systemd/system/vm-communicator.enm =v
 
 # launching text-chat receiver service
 systemctl enable vm-communicator.service || echoerr "E: systemd was unable to enable vm-communicator service."
