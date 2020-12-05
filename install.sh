@@ -23,8 +23,9 @@ echo -e "██╗░░░██╗██╗██████╗░███�
 ░░░╚═╝░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░\n\n***Installing VirtuaLab***\n"
 
 # Updating the apt-get repository list
+echo -ne "\tUpdating apt-get repositories..."
 apt-get update --yes > /dev/null || echoerr "E: Error while trying to update apt-get repositories"
-
+echo " DONE"
 
 # Installing curl and git - needed to pull the rest of the dependencies and modules
 echo -ne "\tInstalling curl and git..."
