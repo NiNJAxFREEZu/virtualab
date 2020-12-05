@@ -22,9 +22,13 @@ echo -e "██╗░░░██╗██╗██████╗░███�
 ░░╚██╔╝░░██║██║░░██║░░░██║░░░╚██████╔╝██║░░██║███████╗██║░░██║██████╦╝
 ░░░╚═╝░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░\n\n***Installing VirtuaLab***\n"
 
+# Updating the apt-get repository list
+apt-get update --yes > /dev/null || echoerr "E: Error while trying to update apt-get repositories"
+
+
 # Installing curl and git - needed to pull the rest of the dependencies and modules
 echo -ne "\tInstalling curl and git..."
-apt-get install curl git --yes > /dev/null || echoerr "E: Error while trying to install a package - apt package manager is currently being used by another process."
+apt-get install curl git --yes > /dev/null || echoerr "E: Error while trying to install packages with apt-get. Check if apt-get is not running in the background."
 echo " DONE"
 
 # Creating directory for storing modules data
