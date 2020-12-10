@@ -24,21 +24,21 @@ echo -e "██╗░░░██╗██╗██████╗░███�
 
 # Updating the apt-get repository list
 echo -ne "\tUpdating apt-get repositories..."
-apt-get update --yes > /dev/null || echoerr "E: Error while trying to update apt-get repositories"
+apt-get update --yes > /dev/null || exit 1
 echo " DONE"
 
 # Installing curl and git - needed to pull the rest of the dependencies and modules
 echo -ne "\tInstalling curl and git..."
-apt-get install curl git --yes > /dev/null || echoerr "E: Error while trying to install packages with apt-get. Check if apt-get is not running in the background."
+apt-get install curl git --yes > /dev/null || exit 1
 echo " DONE"
 
 # Creating directory for storing modules data
-mkdir /etc/virtualab
+mkdir /etc/virtualab > /dev/null
 
 # Downloading install scripts
 echo -ne "\tPulling modules installation scripts..."
-curl -LOs https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/virt-lab-modules/vm-communicator.sh || echoerr "E: curl was unable to pull vm-communicator installation script."
-curl -LOs https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/virt-lab-modules/openmpi.sh || echoerr "E: curl was unable to to pull OpenMPI installation script."
+curl -LOs https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/virt-lab-modules/vm-communicator.sh || exit 1
+curl -LOs https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/virt-lab-modules/openmpi.sh || exit 1
 echo " DONE"
 
 ### Installing modules
@@ -47,13 +47,13 @@ echo -e "\n***Installing modules***\n"
 # VM-communicator
 echo -ne "\tInstalling VM communicator..."
 chmod +x vm-communicator.sh
-./vm-communicator.sh > /dev/null
+./vm-communicator.sh || exit 1
 echo " DONE"
 
 # OpenMPI module
 echo -ne "\tInstalling OpenMPI..."
 chmod +x openmpi.sh
-# ./openmpi.sh > /dev/null TODO Piter
+# ./openmpi.sh || exit 1 
 echo " DONE"
 
 # Activity-monitor
