@@ -23,5 +23,5 @@ cp vm-communicator.service /etc/systemd/system/
 sudo touch /etc/systemd/system/vm-communicator.env
 
 # launching text-chat receiver service
-systemctl enable vm-communicator.service || exit 1
-systemctl start vm-communicator.service || exit 1
+# systemctl enable vm-communicator.service || exit 1
+# systemctl start vm-communicator.service || exit 1
