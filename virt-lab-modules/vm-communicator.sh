@@ -7,7 +7,7 @@ echoerr() { echo "$@" 1>&2; }
 # checking attendance and collecting information about students activities on VM's.
 
 # installing dependencies 
-apt-get install python python3-pip git libnotify-bin --yes || exit 1
+apt-get install python python3-pip git libnotify-bin qt5-default --yes || exit 1
 
 # cloning module's git repository
 git clone https://github.com/wranidlo/broadcast_sender_receiver /etc/virtualab/vm-communicator --quiet || exit 1
