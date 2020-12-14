@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# on master --IP (new) --netmask
+# on master --LAN Interface --IP (new) --netmask
 
 sudo apt install mpich --yes
 sudo apt install nfs-server --yes
@@ -8,16 +8,12 @@ sudo apt install openssh-server --yes
 sudo apt install ssh_askpass --yes
 sudo apt install hydra --yes
 
-echo "*** Installing done ***\n"
+echo "*** Installing done ***\t"
 
 # ip interfejsów
-sudo ifconfig enp0s8 $1 netmask $2 up
+sudo ifconfig $1 $2 netmask $3 up
 
-echo "*** IP SET TO "
-echo $1
-echo " AND NETMASK TO "
-echo $2
-echo "***\n"
+echo "*** IP SET TO $2 AND NETMASK TO $3 ***\t"
 
 #tworzę /mirror w ~home, wystawiam jako mount point przez nfs dla wszystkich
 cd ~
@@ -25,7 +21,7 @@ sudo mkdir /mirror
 echo "mirror *(rw,sync)" | sudo tee -a /etc/exports
 sudo service nfs-kernel-server restart
 
-echo "*** NFS SERVER UP ***\n"
+echo "*** NFS SERVER UP ***\t"
 
 #stwarzam usera z homedir w /mirror, żeby nie musieć klucza ssh przerzucać z clientów na mastera
 sudo useradd --home /mirror mpiuser
@@ -33,7 +29,7 @@ sudo chpasswd mpiuser:a
 
 sudo chown mpiuser /mirror
 
-echo "*** MPI USER MADE ***\n"
+echo "*** MPI USER MADE ***\t"
 
 #stwarzam klucz ssh żeby nie musieć wpisywać hasła do logowania przez ssh z mastera (KLUCZOWE dla MPI)
 su mpiuser
@@ -41,7 +37,7 @@ ssh-keygen -t rsa
 cd ~/.ssh
 .ssh$ cat id_rsa.pub >> authorized_keys
 
-echo "*** KEY COPIED TO SHARED DIR ***\n"
+echo "*** KEY COPIED TO SHARED DIR ***\t"
 
 %$$%$%$%------------------------- TUTAJ MUSZĄ SIĘ PODŁĄCZYĆ WSZYSCY KLIENCI
 te kurwa bo mogę tutaj wrzucić plik z klażdego klioenta z nazwą kompa XDDDDDDD
