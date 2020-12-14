@@ -1,43 +1,106 @@
-sudo apt-get install gcc
-sudo apt-get install mpich
-sudo apt install make
-sudo apt install lam-runtime
+#!/bin/bash
 
-sudo wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.5.tar.gz
-sudo gunzip -c openmpi-4.0.5.tar.gz | tar xf -
-cd openmpi-4.0.5
-./configure --prefix=/usr/local
-sudo make all install
+# on master --IP (new) --netmask
 
+sudo apt install mpich --yes
+sudo apt install nfs-server --yes
+sudo apt install openssh-server --yes
+sudo apt install ssh_askpass --yes
+sudo apt install hydra --yes
 
-echo "#include <mpi.h>
-#include <iostream>
+echo "*** Installing done ***\n"
 
-int main(int argc, char* argv[])
-{
-  MPI_Init(&argc, &argv);
+# ip interfejsów
+sudo ifconfig enp0s8 $1 netmask $2 up
 
-  int rank;
-  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-  if (rank == 0) {
-    int value = 17;
-    int result = MPI_Send(&value, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
-    if (result == MPI_SUCCESS)
-      std::cout << "Rank 0 OK!" << std::endl;
-  } else if (rank == 1) {
-    int value;
-    int result = MPI_Recv(&value, 1, MPI_INT, 0, 0, MPI_COMM_WORLD,
-			  MPI_STATUS_IGNORE);
-    if (result == MPI_SUCCESS && value == 17)
-      std::cout << "Rank 1 OK!" << std::endl;
-  }
-  MPI_Finalize();
-  return 0;
-}" > mpi-test.cpp
+echo "*** IP SET TO "
+echo $1
+echo " AND NETMASK TO "
+echo $2
+echo "***\n"
 
-mpiCC -o mpi-test mpi-test.cpp
-lamboot
-mpirun -np 2 ./mpi-test
-lamhalt
+#tworzę /mirror w ~home, wystawiam jako mount point przez nfs dla wszystkich
+cd ~
+sudo mkdir /mirror
+echo "mirror *(rw,sync)" | sudo tee -a /etc/exports
+sudo service nfs-kernel-server restart
 
+echo "*** NFS SERVER UP ***\n"
 
+#stwarzam usera z homedir w /mirror, żeby nie musieć klucza ssh przerzucać z clientów na mastera
+sudo useradd --home /mirror mpiuser
+sudo chpasswd mpiuser:a
+
+sudo chown mpiuser /mirror
+
+echo "*** MPI USER MADE ***\n"
+
+#stwarzam klucz ssh żeby nie musieć wpisywać hasła do logowania przez ssh z mastera (KLUCZOWE dla MPI)
+su mpiuser
+ssh-keygen -t rsa
+cd ~/.ssh
+.ssh$ cat id_rsa.pub >> authorized_keys
+
+echo "*** KEY COPIED TO SHARED DIR ***\n"
+
+%$$%$%$%------------------------- TUTAJ MUSZĄ SIĘ PODŁĄCZYĆ WSZYSCY KLIENCI
+te kurwa bo mogę tutaj wrzucić plik z klażdego klioenta z nazwą kompa XDDDDDDD
+###TU MUSZĘ SIĘ ZALOGOWAĆ NA KAŻDEGO KLIENTA PRZEZ SSH ŻEBY OMINĄĆ PROMPTY PRZY MPI
+#w pliku machinefile wpisuję klientów i ich capacity, to można teoretycznie ominąć, jeśli mają być zmienne, ale dla stabilności lepiej nie
+cd ~
+touch machinefile
+cat "master:2 \n client:2" >> machinefile
+
+#programik
+cd mirror
+cat "#include <stdio.h>
+#include <mpi.h>
+
+int main(int argc, char** argv) {
+    int myrank, nprocs;
+
+    MPI_Init(&argc, &argv);
+    MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
+    MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
+
+    printf("Hello from processor %d of %d\n", myrank, nprocs);
+
+    MPI_Finalize();
+    return 0;
+}" >> mpi_hello.c
+
+#lecimy z koksem
+mpicc mpi_hello.c -o mpi_hello
+mpiexec -n 4 -f machinefile ./mpi_hello
+
+####### on each client #######
+sudo apt install mpich
+sudo apt install nfs-client
+sudo apt install openssh-server
+sudo apt install ssh_askpass
+sudo apt install hydra
+
+## ip interfejsów
+sudo ifconfig enp0s8 192.168.1.6 netmask 255.255.255.0 up
+
+#w ~home robię /mirror, folder share'owany przez nfs
+cd ~
+sudo mkdir /mirror
+
+#montuję na mastera -> tu musi być już serwer nfs postawiony przez mastera
+## to
+echo "master:/mirror /mirror nfs" | sudo tee -a /etc/fstab
+sudo mount -a
+## albo to, ale za każdym razem przy starcie:
+sudo mount master:/mirror /mirror
+##
+
+#stwarzam usera z homedir w /mirror, żeby nie musieć klucza ssh przerzucać z clientów na mastera
+sudo useradd --home /mirror mpiuser
+sudo passwd mpiuser -a
+
+sudo chown mpiuser /mirror
+
+++++ hostname clientów na masterze w /etc/hosts
+++++ hostname mastera na clientach w /etc/hosts
+++++ ssh każdy do każdego (żeby prompta nie było przy mpi)
