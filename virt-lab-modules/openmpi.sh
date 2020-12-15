@@ -25,7 +25,7 @@ echo "*** NFS SERVER UP ***\t"
 
 #stwarzam usera z homedir w /mirror, żeby nie musieć klucza ssh przerzucać z clientów na mastera
 sudo useradd --home /mirror mpiuser
-sudo chpasswd mpiuser:a
+echo "mpiuser:a" | sudo chpasswd
 
 sudo chown mpiuser /mirror
 
