@@ -1,0 +1,14 @@
+{
+    "class-name": "example",
+    "professor": {
+        "name": "Professor Name",
+        "surname": "Professor Surname",
+        "e-mail": "name.surname@put.poznan.pl"
+    },
+    "students": [{
+        "name": "Student Name",
+        "surname": "Student Surname",
+        "album-nr": "000000",
+        "e-mail": "name.surname@student.put.poznan.pl"
+    }]
+}
