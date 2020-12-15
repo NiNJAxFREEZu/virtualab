@@ -1,1 +1,21 @@
-Manpage TODO
+NAME
+    virtualab - system for conducting remote classes using virtual machines
+
+DESCRIPTION
+    Virtualab is a modular system that allows to conduct remote classes using virtual machines. This application is a
+    small program that sets up a Vagrantfile that can be used to quickly deploy fully functional environment with
+    multiple virtual machines.
+
+VIRTUALAB COMMANDS
+    help
+        Prints the virtualab manpage.
+
+    create
+        Starts a curses interface that allows the user to create a class config file step by step.
+
+NOTES
+    1. Virtualab webiste
+        www.vmlab.ninjait.pl
+
+    start [path-to-config-file]
+        Deploys and launches class environment based off the given JSON config file.

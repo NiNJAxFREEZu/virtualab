@@ -1,5 +1,6 @@
 import sys
 import json
+import curses
 
 def print_manpage():
     with open("manpage", 'r') as manpage_file:
