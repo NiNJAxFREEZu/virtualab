@@ -12,7 +12,3 @@ if [ $1 = "professor" ]; then
   bash /home/vagrant/data/install.sh professor
   cp /home/vagrant/data/.xsession /home/vagrant/
 fi
-
-exit 0
-
-
