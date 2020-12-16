@@ -4,7 +4,7 @@
 # Apt auto-updates have to be disabled in order to guarantee a successfull installation
 # Make sure to not run any updates in the background as this script uses apt package manager
 
-if [ $1 != 'professor' or $1 != 'student' ]
+if [ $1 != 'professor' or $1 != 'student' ];
 then
     echo "Missing argument #1 - [professor] or [student]."
     exit 1

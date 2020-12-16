@@ -1,0 +1,1 @@
+/home/vagrant/data/./launch-vm-communicator.sh

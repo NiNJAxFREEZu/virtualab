@@ -1,2 +1,2 @@
 Vagrantfile
-data/
+.vagrant/

@@ -12,10 +12,9 @@ sudo chmod -R 777 /etc/virtualab/vm-communicator/
 # installing python dependencies
 pip3 install --no-input -r /etc/virtualab/vm-communicator/requirements.txt --quiet  || exit 1
 
-cd /etc/virtualab/vm-communicator
-
+# cd /etc/virtualab/vm-communicator
 # launching vm-communicator
-python3 student_main.py || exit 1 &
-disown -a
+# python3 student_main.py || exit 1 &
+# disown -a
 
 exit 0
