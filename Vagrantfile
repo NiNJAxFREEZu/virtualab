@@ -44,6 +44,7 @@ Vagrant.configure("2") do |config|
             node.vm.network :private_network, ip: machine[:ip]
             node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
             node.vm.synced_folder "data/", "/home/vagrant/data"
+            node.vm.synced_folder "Shared/", "/home/vagrant/Shared"
             node.vm.provision "shell" do |s|
                 s.inline = "chmod +x /home/vagrant/data/provisioning.sh; bash /home/vagrant/data/provisioning.sh student"
                 end
