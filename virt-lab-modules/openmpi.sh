@@ -32,10 +32,8 @@ sudo chown mpiuser /mirror
 echo "*** MPI USER MADE ***\t"
 
 #stwarzam klucz ssh żeby nie musieć wpisywać hasła do logowania przez ssh z mastera (KLUCZOWE dla MPI)
-su mpiuser
-ssh-keygen -t rsa
-cd ~/.ssh
-.ssh$ cat id_rsa.pub >> authorized_keys
+su mpiuser -c "ssh-keygen -f /mirror/.ssh/id_rsa -t rsa rsa -N ''"
+su -c "cat /mirror/.ssh/id_rsa.pub >> /mirror/.ssh/authorized_keys"
 
 echo "*** KEY COPIED TO SHARED DIR ***\t"
 
