@@ -1,0 +1,1 @@
+Here you can place files that will be shared between all VM's
