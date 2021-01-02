@@ -31,34 +31,28 @@ echo " DONE"
 # Creating directory for storing modules data
 sudo mkdir /etc/virtualab > /dev/null
 
-# Downloading install scripts
-echo -ne "\tPulling modules installation scripts..."
-curl -LOs https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/virt-lab-modules/vm-communicator.sh || exit 1
-curl -LOs https://raw.githubusercontent.com/NiNJAxFREEZu/inz-scripts/main/virt-lab-modules/openmpi.sh || exit 1
-echo " DONE"
-
 ### Installing modules
 echo -e "\n***Installing modules***\n"
+cd /home/vagrant/data
 
 # VM-communicator
 echo -ne "\tInstalling VM communicator..."
 chmod +x vm-communicator.sh
 ./vm-communicator.sh || exit 1
+
+# Adding a desktop entry for XFCE autostart
+mkdir /home/vagrant/.config/autostart
+cp /home/vagrant/data/vm-communicator.desktop /home/vagrant/.config/autostart/
 echo " DONE"
 
 # OpenMPI module
 echo -ne "\tInstalling OpenMPI..."
 chmod +x openmpi.sh
-# ./openmpi.sh || exit 1 
+# ./openmpi.sh || exit 1
 echo " DONE"
 
 # Activity-monitor
-
-### Cleaning up, removing dowloaded scripts
-echo -ne "\tCleaning up..."
-rm vm-communicator.sh
-rm openmpi.sh
-echo " DONE"
+# TODO
 
 echo -e "\nVirtuaLab has been installed succesfully!"
 exit 0

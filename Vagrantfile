@@ -22,12 +22,12 @@ Vagrant.configure("2") do |config|
         config.vm.define machine[:hostname] do |node|
             node.vm.box = machine[:box]
             node.vm.hostname = machine[:hostname]
-            node.vm.network :private_network, ip: machine[:ip]
+            node.vm.network :public_network, bridge: "eth0", ip: machine[:ip]
             node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
             node.vm.synced_folder "data/", "/home/vagrant/data"
             node.vm.synced_folder "Shared/", "/home/vagrant/Shared"
             node.vm.provision "shell" do |s|
-                s.inline = "chmod +x /home/vagrant/data/provisioning.sh; bash /home/vagrant/data/provisioning.sh professor"
+                s.inline = "chmod +x /home/vagrant/data/install.sh; bash /home/vagrant/data/install.sh professor"
                 end
 
             node.vm.provider :virtualbox do |vb|
@@ -41,12 +41,12 @@ Vagrant.configure("2") do |config|
         config.vm.define machine[:hostname] do |node|
             node.vm.box = machine[:box]
             node.vm.hostname = machine[:hostname]
-            node.vm.network :private_network, ip: machine[:ip]
+            node.vm.network :public_network, bridge: "eth0", ip: machine[:ip]
             node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
             node.vm.synced_folder "data/", "/home/vagrant/data"
             node.vm.synced_folder "Shared/", "/home/vagrant/Shared"
             node.vm.provision "shell" do |s|
-                s.inline = "chmod +x /home/vagrant/data/provisioning.sh; bash /home/vagrant/data/provisioning.sh student"
+                s.inline = "chmod +x /home/vagrant/data/install.sh; bash /home/vagrant/data/install.sh student"
                 end
 
             node.vm.provider :virtualbox do |vb|
