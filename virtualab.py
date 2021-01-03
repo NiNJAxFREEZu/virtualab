@@ -2,6 +2,8 @@ import sys
 import json
 import curses
 
+from vagrantfileparser import parse
+
 def print_manpage():
     with open("manpage", 'r') as manpage_file:
         manpage = manpage_file.read()

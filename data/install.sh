@@ -45,14 +45,22 @@ mkdir /home/vagrant/.config/autostart
 cp /home/vagrant/data/vm-communicator.desktop /home/vagrant/.config/autostart/
 echo " DONE"
 
+# Activity-monitor
+if [ $1 = 'student' ]
+then
+  echo -ne "\tInstalling activity monitor..."
+  cp /home/vagrant/data/activity-monitor.desktop /home/vagrant/.config/autostart/
+  echo " DONE"
+fi
+
 # OpenMPI module
 echo -ne "\tInstalling OpenMPI..."
 chmod +x openmpi.sh
 # ./openmpi.sh || exit 1
 echo " DONE"
 
-# Activity-monitor
-# TODO
+# Cleaning up...
+sudo umount /home/vagrant/data
 
 echo -e "\nVirtuaLab has been installed succesfully!"
 exit 0
