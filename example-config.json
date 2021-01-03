@@ -3,15 +3,15 @@
     "class-name": "example",
 
     "professor": {
-        "name": "Professor Name",
-        "surname": "Professor Surname",
+        "name": "Jerzy",
+        "surname": "Bartoszek",
         "email": "name.surname@put.poznan.pl"
     },
 
     "students": [{
-        "name": "Student Name",
-        "surname": "Student Surname",
-        "albumnr": "000000",
+        "name": "Marcin",
+        "surname": "Borysiewicz",
+        "albumnr": "136218",
         "email": "name.surname@student.put.poznan.pl"
     }]
 }

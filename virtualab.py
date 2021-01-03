@@ -1,8 +1,7 @@
 import sys
 import json
 import curses
-
-from vagrantfileparser import parse
+import vagrantfileparser as vfp
 
 def print_manpage():
     with open("manpage", 'r') as manpage_file:
@@ -14,7 +13,7 @@ def create_class_config():
     print("TODO")
 
 def start_class(config_json):
-    print(config_json)
+    vfp.parse(config_json)
 
 if __name__ == "__main__":
     # Interpreting command line arguments
