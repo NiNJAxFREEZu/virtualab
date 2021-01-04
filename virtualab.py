@@ -1,4 +1,5 @@
 import sys
+import os
 import json
 import curses
 import vagrantfileparser as vfp
@@ -13,7 +14,8 @@ def create_class_config():
     print("TODO")
 
 def start_class(config_json):
-    vfp.parse(config_json)
+    pvmname = vfp.parse(config_json)
+    # os.system("vagrant ssh " + pvmname + " --command ...") # todo
 
 if __name__ == "__main__":
     # Interpreting command line arguments

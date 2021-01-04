@@ -60,7 +60,7 @@ chmod +x openmpi.sh
 echo " DONE"
 
 # Cleaning up...
-sudo umount /home/vagrant/data
+# sudo umount /home/vagrant/data
 
 echo -e "\nVirtuaLab has been installed succesfully!"
 exit 0
