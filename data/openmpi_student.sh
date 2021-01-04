@@ -8,8 +8,6 @@ sudo apt install hydra --yes
 
 #ip interfejsow do wpisania /etc/hosts do wpisania przy przejsciu na vagranta
 
-sudo echo "192.168.101.2	master" >> /etc/hosts
-
 #w ~home robię /mirror, folder share'owany przez nfs
 cd ~
 sudo mkdir /mirror
