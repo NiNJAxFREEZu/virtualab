@@ -1,29 +1,18 @@
 #!/bin/bash
 
-#parametry do ogarniecia
-
-cd ~
-touch machinefile
-cat "master:2 \n client:2" >> machinefile
-
+touch /home/vagrant/data/machinefile
+sudo /home/vagrant/data/openmpi_prof_part2.py
+number_of_procs=$?
 #programik
-cd mirror
-cat "#include <stdio.h>
-#include <mpi.h>
+sudo cp /home/vagrant/data/mpi_hello.c /mirror/mpi_hello.c || exit 1
+sudo cp /home/vagrant/data/machinefile /mirror/machinefile || exit 1
+sudo cp /home/vagrant/data/executempi.sh /mirror/executempi.sh || exit 1
 
-int main(int argc, char** argv) {
-    int myrank, nprocs;
-
-    MPI_Init(&argc, &argv);
-    MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
-    MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
-
-    printf("Hello from processor %d of %d\n", myrank, nprocs);
-
-    MPI_Finalize();
-    return 0;
-}" >> mpi_hello.c
-
+cd /mirror || exit 1
 #lecimy z koksem
-mpicc mpi_hello.c -o mpi_hello
-mpiexec -n 4 -f machinefile ./mpi_hello
+sudo chmod +x executempi.sh
+echo "**** MPI CAN NOW BE USED ****"
+echo "**** USE executempi.sh to run mpi programms ****"
+echo "**** RUNNING EXAMPLE PROGRAM ****"
+echo "**** AT LEAST $number_of_procs PROCESSORS ARE AVAILABLE ****"
+sudo ./executempi.sh mpi_hello.c mpi_hello $number_of_procs
