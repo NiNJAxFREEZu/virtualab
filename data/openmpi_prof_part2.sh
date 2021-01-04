@@ -1,6 +1,12 @@
 #!/bin/bash
 
 #parametry do ogarniecia
+#ssh-keyscan $1 >> ~/.ssh/known_hosts
+
+#for STUDENT in $1
+#do
+#ssh-keyscan $STUDENT >> ~/.ssh/known_hosts
+#done
 
 cd ~
 touch machinefile
