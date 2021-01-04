@@ -10,11 +10,6 @@ sudo apt install hydra --yes
 
 echo "*** Installing done ***\t"
 
-# ip interfejsów
-sudo ifconfig $1 $2 netmask $3 up
-
-echo "*** IP SET TO $2 AND NETMASK TO $3 ***\t"
-
 #tworzę /mirror w ~home, wystawiam jako mount point przez nfs dla wszystkich
 cd ~
 sudo mkdir /mirror
