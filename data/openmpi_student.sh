@@ -1,10 +1,6 @@
 #!/bin/bash
 #on client --LAN Interface --IP (new) --netmask
-sudo apt install mpich --yes
-sudo apt install nfs-client --yes
-sudo apt install openssh-server --yes
-sudo apt install ssh_askpass --yes
-sudo apt install hydra --yes
+sudo apt install mpich nfs-client openssh-server ssh_askpass hydra --yes
 
 #ip interfejsow do wpisania /etc/hosts do wpisania przy przejsciu na vagranta
 

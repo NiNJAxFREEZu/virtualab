@@ -2,12 +2,7 @@
 
 # on master --LAN Interface --IP (new) --netmask
 
-sudo apt install mpich --yes
-sudo apt install nfs-server --yes
-sudo apt install openssh-server --yes
-sudo apt install ssh_askpass --yes
-sudo apt install hydra --yes
-
+sudo apt install mpich nfs-server openssh-server ssh_askpass hydra --yes
 echo "*** Installing done ***\t"
 
 #tworzę /mirror w ~home, wystawiam jako mount point przez nfs dla wszystkich
