@@ -35,6 +35,11 @@ sudo mkdir /etc/virtualab > /dev/null
 echo -e "\n***Installing modules***\n"
 cd /home/vagrant/data
 
+# .virtualabinfo
+echo -ne "\tCopying .virtualabinfo..."
+cp /home/vagrant/data/$(hostname) /home/vagrant/.virtualabinfo
+echo " DONE"
+
 # VM-communicator
 echo -ne "\tInstalling VM communicator..."
 chmod +x vm-communicator.sh

@@ -22,16 +22,16 @@ def parse(class_config_json):
     ipv4_last_octet = 2
     ssh_port = 2200
 
+    professor_ipv4 = ipv4_subnet + '.' + str(ipv4_last_octet)
+    professor_hostname = 'p' + class_config_json['professor']['name'] + class_config_json['professor']['surname']
     # Create Vagrantfile header
     vfheader = 'Vagrant.configure(\"2\") do |config|\n'
-
     # Create Professors array
     professors = '\tprofessors=[\n'
 
     p = VmObject(
-        hostname=class_config_json['professor']['name']
-                 + class_config_json['professor']['surname'],
-        ip=ipv4_subnet + '.' + str(ipv4_last_octet),
+        hostname= professor_hostname,
+        ip=professor_ipv4,
         ssh_port=ssh_port,
         box = class_config_json['vagrantbox'])
     professors = professors + p.deparse()
@@ -40,13 +40,15 @@ def parse(class_config_json):
 
     professors = professors + '\t]\n'
 
-
+    # Creating professor's .virtualabinfo json
+    pvirtualabinfo = json.loads(json.dumps(class_config_json['professor']))
+    pvirtualabinfo['students'] = []
     # Create Students array
     students = '\tstudents=[\n'
 
     for student in class_config_json['students']:
         s = VmObject(
-            hostname=student['name'] + student['surname'] + student['albumnr'],
+            hostname= 's' + student['albumnr'],
             ip=ipv4_subnet + '.' + str(ipv4_last_octet),
             ssh_port=ssh_port,
             box=class_config_json['vagrantbox'])
@@ -54,7 +56,23 @@ def parse(class_config_json):
         ipv4_last_octet += 1
         ssh_port += 1
 
+        # Adding student info into professor .virtualabinfo
+        student['ip'] = s.ip
+        pvirtualabinfo['students'].append(student)
+
+        # Saving student json into .virtualabinfo
+        student['professorip'] = professor_ipv4
+        output_file = open('data/' + s.hostname, 'w')
+        output_file.write(str({'student': student}).replace('\'', '\"'))
+        output_file.close()
+
     students = students + '\t]\n'
+
+    # Creating professors .virtualabinfo
+    pvirtualabinfo = {'professor': pvirtualabinfo}
+    output_file = open('data/' + p.hostname, 'w')
+    output_file.write(str(pvirtualabinfo).replace('\'', '\"'))
+    output_file.close()
 
     # Final step -> Write parsed vagrantfile into a file
     with open("VagrantfileFooter") as f:
@@ -63,4 +81,4 @@ def parse(class_config_json):
     output_file = open("Vagrantfile", "w")
     output_file.write(vfheader + professors + students + vffooter)
     output_file.close()
-    return 1
+    return professor_hostname

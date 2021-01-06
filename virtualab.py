@@ -15,7 +15,10 @@ def create_class_config():
 
 def start_class(config_json):
     pvmname = vfp.parse(config_json)
-    # os.system("vagrant ssh " + pvmname + " --command ...") # todo
+    os.system("vagrant up")
+    os.system("vagrant ssh " + pvmname + " --command \"/home/vagrant/data/./openmpi_prof_part2.sh\"") # todo
+    print("Done")
+
 
 if __name__ == "__main__":
     # Interpreting command line arguments
