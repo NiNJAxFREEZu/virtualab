@@ -72,7 +72,7 @@ fi
 echo " DONE"
 
 # Cleaning up...
-# sudo umount /home/vagrant/data
+rm /home/vagrant/data/$(hostname)
 
 echo -e "\nVirtuaLab has been installed succesfully!"
 exit 0
