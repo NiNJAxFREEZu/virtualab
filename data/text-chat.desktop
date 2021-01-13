@@ -2,9 +2,10 @@
 Encoding=UTF-8
 Version=0.9.4
 Type=Application
-Name=VirtuaLab Activity Monitor
-Comment=ActivityMonitor
-Exec=/etc/virtualab/vm-communicator/launchactivity
+Name=VirtuaLab Messenger
+Comment=VirtuaLab class text chat
+Icon=xfwm4
+Exec=/etc/virtualab/vm-communicator/launchchat
 OnlyShowIn=XFCE;
 StartupNotify=false
 Terminal=false

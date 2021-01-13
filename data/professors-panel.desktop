@@ -2,9 +2,10 @@
 Encoding=UTF-8
 Version=0.9.4
 Type=Application
-Name=VirtuaLab Activity Monitor
-Comment=ActivityMonitor
-Exec=/etc/virtualab/vm-communicator/launchactivity
+Name=VirtuaLab Professor's Panel
+Comment=VirtuaLab Professor's Panel
+Icon=htop
+Exec=/etc/virtualab/vm-communicator/launchprof
 OnlyShowIn=XFCE;
 StartupNotify=false
 Terminal=false

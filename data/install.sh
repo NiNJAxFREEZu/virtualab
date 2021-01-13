@@ -45,9 +45,17 @@ echo " DONE"
 # Activity-monitor
 if [ $1 = 'student' ]
 then
-  echo -ne "\tInstalling activity monitor..."
   cp /home/vagrant/data/activity-monitor.desktop /home/vagrant/.config/autostart/
-  echo " DONE"
+fi
+
+# Adding shortcuts to XFCE Desktop
+mkdir /home/vagrant/.local/share/applications
+cp /home/vagrant/data/mpiexec.desktop /home/vagrant/Desktop/
+cp /home/vagrant/data/text-chat.desktop /home/vagrant/Desktop/
+
+if [ $1 = 'professor' ]
+then
+  cp /home/vagrant/data/professors-panel.desktop /home/vagrant/Desktop/
 fi
 
 # OpenMPI module

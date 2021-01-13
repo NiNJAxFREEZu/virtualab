@@ -2,8 +2,8 @@
 Encoding=UTF-8
 Version=0.9.4
 Type=Application
-Name=VirtuaLab
-Comment=TextChat
+Name=VirtuaLab Communication Module
+Comment=VirtuaLab Communication Module
 Exec=/etc/virtualab/vm-communicator/launchcomm
 OnlyShowIn=XFCE;
 StartupNotify=false
