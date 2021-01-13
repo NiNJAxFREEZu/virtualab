@@ -4,11 +4,11 @@
             node.vm.hostname = machine[:hostname]
             node.vm.network :public_network, bridge: "eth0", ip: machine[:ip]
             node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
-            node.vm.synced_folder "data/", "/home/vagrant/data"
+            node.vm.synced_folder "data/", "/home/vagrant/data", mount_options: ["dmode=775,fmode=777"]
             node.vm.synced_folder "Shared/", "/home/vagrant/Shared"
 
             node.vm.provision "shell" do |install|
-                install.inline = "chmod +x /home/vagrant/data/install.sh; bash /home/vagrant/data/install.sh professor"
+                install.inline = "bash /home/vagrant/data/install.sh professor"
                 end
 
             node.vm.provision "shell" do |lab_config|
@@ -29,11 +29,11 @@
             node.vm.hostname = machine[:hostname]
             node.vm.network :public_network, bridge: "eth0", ip: machine[:ip]
             node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
-            node.vm.synced_folder "data/", "/home/vagrant/data"
+            node.vm.synced_folder "data/", "/home/vagrant/data", mount_options: ["dmode=775,fmode=777"]
             node.vm.synced_folder "Shared/", "/home/vagrant/Shared"
 
             node.vm.provision "shell" do |install|
-            install.inline = "chmod +x /home/vagrant/data/install.sh; bash /home/vagrant/data/install.sh professor"
+            install.inline = "bash /home/vagrant/data/install.sh professor"
                 end
 
             node.vm.provision "shell" do |lab_config|
