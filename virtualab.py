@@ -2,6 +2,8 @@ import sys
 import os
 import json
 import vagrantfileparser as vfp
+import platform
+
 
 def print_manpage():
     with open("manpage", 'r') as manpage_file:
@@ -9,13 +11,18 @@ def print_manpage():
 
     print(manpage)
 
+
 def create_class_config():
     print("TODO")
 
+
 def start_class(config_json):
     pvmname = vfp.parse(config_json)
+
+    if platform.system() == 'Windows':
+        os.system('dos2unix */*.sh')
     os.system("vagrant up")
-    os.system("vagrant ssh " + pvmname + " --command \"/home/vagrant/data/./openmpi_prof_part2.sh\"") # todo
+    os.system("vagrant ssh " + pvmname + " --command \"/home/vagrant/data/./openmpi_prof_part2.sh\"")  # todo
     print("Done")
 
 

@@ -35,7 +35,6 @@ echo " DONE"
 
 # VM-communicator
 echo -ne "\tInstalling VM communicator..."
-chmod +x vm-communicator.sh
 ./vm-communicator.sh || exit 1
 
 # Adding a desktop entry for XFCE autostart
@@ -53,19 +52,17 @@ fi
 
 # OpenMPI module
 echo -ne "\tInstalling OpenMPI..."
-if [ $1 = 'student' ];
+if [ $1 = 'student' ]
 then
-  chmod +x openmpi_student.sh
   ./openmpi_student.sh || exit 1
-elif [ $1 = 'professor' ];
+elif [ $1 = 'professor' ]
 then
-  chmod +x openmpi_prof_part1.sh
   ./openmpi_prof_part1.sh || exit 1
 fi
 echo " DONE"
 
 # Cleaning up...
-sudo rm /home/vagrant/data/$(hostname)
+rm /home/vagrant/data/$(hostname)
 
 echo -e "\nVirtuaLab has been installed succesfully!"
 exit 0

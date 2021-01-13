@@ -1,9 +1,11 @@
 import json
 
+
 class VmObject:
-    def __init__(self, hostname, ip, ssh_port, box, lab):
+    def __init__(self, hostname, ip, bridge, ssh_port, box, lab):
         self.hostname = hostname.replace(' ', '')
         self.ip = ip
+        self.bridge = bridge
         self.ssh_port = ssh_port
         self.box = box
         self.lab = lab
@@ -11,13 +13,15 @@ class VmObject:
     def deparse(self) -> str:
         output = '\t{'
         output = output + '\t\t:hostname => ' + '\"' + self.hostname + '\",\n'
-        output = output + '\t\t:ip => '       + '\"' + self.ip + '\",\n'
+        output = output + '\t\t:ip => ' + '\"' + self.ip + '\",\n'
+        output = output + '\t\t:bridge => ' + '\"' + self.bridge + '\",\n'
         output = output + '\t\t:ssh_port => ' + '\"' + str(self.ssh_port) + '\",\n'
-        output = output + '\t\t:box => '      + '\"' + self.box + '\",\n'
-        output = output + '\t\t:lab => '      + '\"' + self.lab + '\"\n'
+        output = output + '\t\t:box => ' + '\"' + self.box + '\",\n'
+        output = output + '\t\t:lab => ' + '\"' + self.lab + '\"\n'
         output = output + '\t}'
 
         return output
+
 
 def parse(class_config_json):
     ipv4_subnet = "192.168.101"
@@ -32,8 +36,9 @@ def parse(class_config_json):
     professors = '\tprofessors=[\n'
 
     p = VmObject(
-        hostname= professor_hostname,
+        hostname=professor_hostname,
         ip=professor_ipv4,
+        bridge=class_config_json['bridge'],
         ssh_port=ssh_port,
         box=class_config_json['vagrantbox'],
         lab=class_config_json['lab-config'])
@@ -51,8 +56,9 @@ def parse(class_config_json):
 
     for student in class_config_json['students']:
         s = VmObject(
-            hostname= 's' + student['albumnr'],
+            hostname='s' + student['albumnr'],
             ip=ipv4_subnet + '.' + str(ipv4_last_octet),
+            bridge=class_config_json['bridge'],
             ssh_port=ssh_port,
             box=class_config_json['vagrantbox'],
             lab=class_config_json['lab-config'])
