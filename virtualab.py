@@ -41,6 +41,9 @@ if __name__ == "__main__":
 
         start_class(class_config_json)
 
+    elif sys.argv[1] == "stop":
+        os.system("vagrant destroy -f")
+
     else:
         sys.stderr.write("\'" + sys.argv[1] + "\' is not a valid virtualab command. See \'virtualab help.\'\n")
         exit(1)

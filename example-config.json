@@ -4,7 +4,7 @@
 
     "professor": {
         "name": "Krzysztof",
-        "surname": "Zwierzyński",
+        "surname": "Zwierzynski",
         "email": "name.surname@put.poznan.pl"
     },
 
@@ -13,11 +13,6 @@
         "surname": "Borysiewicz",
         "albumnr": "136218",
         "email": "name.surname@student.put.poznan.pl"
-    }, {
-        "name": "Piotr",
-        "surname": "Zieliński",
-        "albumnr": "123123",
-        "email": "name.surname@student.put.poznan.pl"
-        }
+    }
     ]
 }

@@ -63,11 +63,11 @@ echo -ne "\tInstalling OpenMPI..."
 if [ $1 = 'student' ]
 then
   chmod +x openmpi_student.sh
-  ./openmpi_student.sh || exit 1
+  # ./openmpi_student.sh || exit 1
 elif [ $1 = 'professor' ]
 then
   chmod +x openmpi_prof_part1.sh
-  ./openmpi_prof_part1.sh || exit 1
+  # ./openmpi_prof_part1.sh || exit 1
 fi
 echo " DONE"
 
