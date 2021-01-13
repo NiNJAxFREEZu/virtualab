@@ -1,7 +1,6 @@
 import sys
 import os
 import json
-import curses
 import vagrantfileparser as vfp
 
 def print_manpage():
