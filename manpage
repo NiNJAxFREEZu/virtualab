@@ -10,12 +10,18 @@ VIRTUALAB COMMANDS
     help
         Prints the virtualab manpage.
 
-    create
-        Starts a curses interface that allows the user to create a class config file step by step.
-
-NOTES
-    1. Virtualab webiste
-        www.vmlab.ninjait.pl
-
     start [path-to-config-file]
         Deploys and launches class environment based off the given JSON config file.
+        See "example-config.json" file.
+
+    stop
+        Stops currently running virtualab cluster and deletes all virtual machines within the cluster.
+
+NOTES
+    This project was created by:
+        Marcin Borysiewicz
+        Piotr Zieliński
+        Patryk Baryła
+        Szymon Wasilewski
+
+
