@@ -1,6 +1,5 @@
 import json
 
-
 class VmObject:
     def __init__(self, hostname, ip, bridge, ssh_port, box, lab):
         self.hostname = hostname.replace(' ', '')
