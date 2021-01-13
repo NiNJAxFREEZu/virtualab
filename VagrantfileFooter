@@ -2,7 +2,7 @@
         config.vm.define machine[:hostname] do |node|
             node.vm.box = machine[:box]
             node.vm.hostname = machine[:hostname]
-            node.vm.network :public_network, bridge: "eth0", ip: machine[:ip]
+            node.vm.network :public_network, bridge: machine[:bridge], ip: machine[:ip]
             node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
             node.vm.synced_folder "data/", "/home/vagrant/data"
             node.vm.synced_folder "Shared/", "/home/vagrant/Shared"
@@ -27,7 +27,7 @@
         config.vm.define machine[:hostname] do |node|
             node.vm.box = machine[:box]
             node.vm.hostname = machine[:hostname]
-            node.vm.network :public_network, bridge: "eth0", ip: machine[:ip]
+            node.vm.network :public_network, bridge: machine[:bridge], ip: machine[:ip]
             node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
             node.vm.synced_folder "data/", "/home/vagrant/data"
             node.vm.synced_folder "Shared/", "/home/vagrant/Shared"
