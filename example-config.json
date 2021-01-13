@@ -1,6 +1,6 @@
 {
     "vagrantbox": "socialwifi/ubuntu-gui",
-    "class-name": "wti",
+    "lab-config": "class-specific-config/wti-ubuntu.sh",
 
     "professor": {
         "name": "Krzysztof",

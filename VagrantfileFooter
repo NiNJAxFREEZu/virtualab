@@ -6,9 +6,15 @@
             node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
             node.vm.synced_folder "data/", "/home/vagrant/data"
             node.vm.synced_folder "Shared/", "/home/vagrant/Shared"
-            node.vm.provision "shell" do |s|
-                s.inline = "chmod +x /home/vagrant/data/install.sh; bash /home/vagrant/data/install.sh professor"
+
+            node.vm.provision "shell" do |install|
+                install.inline = "chmod +x /home/vagrant/data/install.sh; bash /home/vagrant/data/install.sh professor"
                 end
+
+            node.vm.provision "shell" do |lab_config|
+                lab_config.path = machine[:lab]
+                end
+
 
             node.vm.provider :virtualbox do |vb|
                 vb.customize ["modifyvm", :id, "--memory", 1024]
@@ -25,8 +31,13 @@
             node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
             node.vm.synced_folder "data/", "/home/vagrant/data"
             node.vm.synced_folder "Shared/", "/home/vagrant/Shared"
-            node.vm.provision "shell" do |s|
-                s.inline = "chmod +x /home/vagrant/data/install.sh; bash /home/vagrant/data/install.sh student"
+
+            node.vm.provision "shell" do |install|
+            install.inline = "chmod +x /home/vagrant/data/install.sh; bash /home/vagrant/data/install.sh professor"
+                end
+
+            node.vm.provision "shell" do |lab_config|
+                lab_config.path = machine[:lab]
                 end
 
             node.vm.provider :virtualbox do |vb|

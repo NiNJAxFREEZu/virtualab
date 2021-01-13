@@ -1,18 +1,20 @@
 import json
 
 class VmObject:
-    def __init__(self, hostname, ip, ssh_port, box):
+    def __init__(self, hostname, ip, ssh_port, box, lab):
         self.hostname = hostname.replace(' ', '')
         self.ip = ip
         self.ssh_port = ssh_port
         self.box = box
+        self.lab = lab
 
     def deparse(self) -> str:
         output = '\t{'
         output = output + '\t\t:hostname => ' + '\"' + self.hostname + '\",\n'
         output = output + '\t\t:ip => '       + '\"' + self.ip + '\",\n'
         output = output + '\t\t:ssh_port => ' + '\"' + str(self.ssh_port) + '\",\n'
-        output = output + '\t\t:box => '      + '\"' + self.box + '\"\n'
+        output = output + '\t\t:box => '      + '\"' + self.box + '\",\n'
+        output = output + '\t\t:lab => '      + '\"' + self.lab + '\"\n'
         output = output + '\t}'
 
         return output
@@ -33,7 +35,8 @@ def parse(class_config_json):
         hostname= professor_hostname,
         ip=professor_ipv4,
         ssh_port=ssh_port,
-        box = class_config_json['vagrantbox'])
+        box=class_config_json['vagrantbox'],
+        lab=class_config_json['lab-config'])
     professors = professors + p.deparse()
     ipv4_last_octet += 1
     ssh_port += 1
@@ -51,7 +54,8 @@ def parse(class_config_json):
             hostname= 's' + student['albumnr'],
             ip=ipv4_subnet + '.' + str(ipv4_last_octet),
             ssh_port=ssh_port,
-            box=class_config_json['vagrantbox'])
+            box=class_config_json['vagrantbox'],
+            lab=class_config_json['lab-config'])
         students = students + s.deparse()
         ipv4_last_octet += 1
         ssh_port += 1
