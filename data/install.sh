@@ -11,23 +11,27 @@ echo -e "██╗░░░██╗██╗██████╗░███�
 ░░╚██╔╝░░██║██║░░██║░░░██║░░░╚██████╔╝██║░░██║███████╗██║░░██║██████╦╝
 ░░░╚═╝░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░\n\n***Installing VirtuaLab***\n"
 
+
 # Deleting autologin file
 echo -ne "\tDeleting autologin file..."
-sudo rm /etc/lightdm/lightdm.conf.d/vagrant-autologin.conf
+rm /etc/lightdm/lightdm.conf.d/vagrant-autologin.conf
 echo " DONE"
+
+# Logging out vagrant user
+kill -9 $(ps -dN | grep Xorg | awk '{print $1}')
 
 # Updating the apt-get repository list
 echo -ne "\tUpdating apt-get repositories..."
-sudo apt-get update --yes > /dev/null || exit 1
+apt-get update --yes > /dev/null || exit 1
 echo " DONE"
 
 # Installing curl and git - needed to pull the rest of the dependencies and modules
 echo -ne "\tInstalling curl and git..."
-sudo apt-get install curl git --yes > /dev/null || exit 1
+apt-get install curl git --yes > /dev/null || exit 1
 echo " DONE"
 
 # Creating directory for storing modules data
-sudo mkdir /etc/virtualab > /dev/null
+mkdir /etc/virtualab > /dev/null
 
 ### Installing modules
 echo -e "\n***Installing modules***\n"
