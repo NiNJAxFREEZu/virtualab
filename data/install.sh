@@ -11,6 +11,11 @@ echo -e "██╗░░░██╗██╗██████╗░███�
 ░░╚██╔╝░░██║██║░░██║░░░██║░░░╚██████╔╝██║░░██║███████╗██║░░██║██████╦╝
 ░░░╚═╝░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░\n\n***Installing VirtuaLab***\n"
 
+# Deleting autologin file
+echo -ne "\tDeleting autologin file..."
+sudo rm /etc/lightdm/lightdm.conf.d/vagrant-autologin.conf
+echo " DONE"
+
 # Updating the apt-get repository list
 echo -ne "\tUpdating apt-get repositories..."
 sudo apt-get update --yes > /dev/null || exit 1
