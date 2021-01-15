@@ -7,6 +7,6 @@ cd /home/vagrant/data
 # TODO .virtualabinfo
 
 # MPI
-./mpi_prof_part_2.sh || exit 1
+./mpi_prof_part2.sh || exit 1
 
 echo " DONE"

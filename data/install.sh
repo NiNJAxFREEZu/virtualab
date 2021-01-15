@@ -29,7 +29,7 @@ echo " DONE"
 
 # Saving connection info
 echo -ne "\tSaving connection info..."
-ifconfig eth1 | grep 'inet ' | awk '{print $2}' | sed 1q > /home/vagrant/data/ipaddress/$(hostname)
+ifconfig eth1 | grep 'inet ' | awk '{print $2}' > /home/vagrant/data/ipaddress/$(hostname)
 echo " DONE"
 
 # Updating the apt-get repository list
