@@ -71,7 +71,7 @@ def parse(class_config_json):
 
         # Saving student json into .virtualabinfo
         student['professorip'] = professor_ipv4
-        output_file = open('data/' + s.hostname, 'w')
+        output_file = open('data/virtualabinfo' + s.hostname, 'w')
         output_file.write(str({'student': student}).replace('\'', '\"'))
         output_file.close()
 
@@ -79,7 +79,7 @@ def parse(class_config_json):
 
     # Creating professors .virtualabinfo
     pvirtualabinfo = {'professor': pvirtualabinfo}
-    output_file = open('data/' + p.hostname, 'w')
+    output_file = open('data/virtualabinfo/' + p.hostname, 'w')
     output_file.write(str(pvirtualabinfo).replace('\'', '\"'))
     output_file.close()
 

@@ -44,7 +44,7 @@ echo " DONE"
 
 # .virtualabinfo
 echo -ne "\tCopying .virtualabinfo..."
-cp /home/vagrant/data/$(hostname) /home/vagrant/.virtualabinfo
+cp /home/vagrant/data/virtualabinfo/$(hostname) /home/vagrant/.virtualabinfo
 echo " DONE"
 
 # VM-communicator
