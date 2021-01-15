@@ -18,7 +18,19 @@ rm /etc/lightdm/lightdm.conf.d/vagrant-autologin.conf
 echo " DONE"
 
 # Logging out vagrant user
+echo -ne "\tLogging out vagrant user..."
 kill -9 $(ps -dN | grep Xorg | awk '{print $1}')
+echo " DONE"
+
+# .virtualabinfo stem
+echo -ne "\tCopying .virtualabinfo..."
+cp /home/vagrant/data/virtualabinfo/$(hostname) /home/vagrant/.virtualabinfo
+echo " DONE"
+
+# Saving connection info
+echo -ne "\tSaving connection info..."
+ifconfig eth1 | grep inet | awk '{print $2}' | sed 1q > /home/vagrant/data/ipaddress/$(hostname)
+echo " DONE"
 
 # Updating the apt-get repository list
 echo -ne "\tUpdating apt-get repositories..."
@@ -38,13 +50,8 @@ echo -e "\n***Installing modules***\n"
 cd /home/vagrant/data
 
 # RDP server
-echo -ne "\tInstalling OpenMPI..."
+echo -ne "\tInstalling RDP server..."
 ./rdp.sh || exit 1
-echo " DONE"
-
-# .virtualabinfo
-echo -ne "\tCopying .virtualabinfo..."
-cp /home/vagrant/data/virtualabinfo/$(hostname) /home/vagrant/.virtualabinfo
 echo " DONE"
 
 # VM-communicator
@@ -82,9 +89,6 @@ then
   ./mpi_prof_part1.sh || exit 1
 fi
 echo " DONE"
-
-# Cleaning up...
-rm /home/vagrant/data/$(hostname)
 
 echo -e "\nVirtuaLab has been installed succesfully!"
 exit 0
