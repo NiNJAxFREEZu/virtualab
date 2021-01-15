@@ -37,6 +37,11 @@ mkdir /etc/virtualab > /dev/null
 echo -e "\n***Installing modules***\n"
 cd /home/vagrant/data
 
+# RDP server
+echo -ne "\tInstalling OpenMPI..."
+./rdp.sh || exit 1
+echo " DONE"
+
 # .virtualabinfo
 echo -ne "\tCopying .virtualabinfo..."
 cp /home/vagrant/data/$(hostname) /home/vagrant/.virtualabinfo
