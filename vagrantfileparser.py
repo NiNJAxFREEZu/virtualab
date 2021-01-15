@@ -1,11 +1,10 @@
 import json
 
 class VmObject:
-    def __init__(self, hostname, ip, bridge, ssh_port, box, lab):
+    def __init__(self, hostname, ip, bridge, box, lab):
         self.hostname = hostname.replace(' ', '')
         self.ip = ip
         self.bridge = bridge
-        self.ssh_port = ssh_port
         self.box = box
         self.lab = lab
 
@@ -14,7 +13,6 @@ class VmObject:
         output = output + '\t\t:hostname => ' + '\"' + self.hostname + '\",\n'
         output = output + '\t\t:ip => ' + '\"' + self.ip + '\",\n'
         output = output + '\t\t:bridge => ' + '\"' + self.bridge + '\",\n'
-        output = output + '\t\t:ssh_port => ' + '\"' + str(self.ssh_port) + '\",\n'
         output = output + '\t\t:box => ' + '\"' + self.box + '\",\n'
         output = output + '\t\t:lab => ' + '\"' + self.lab + '\"\n'
         output = output + '\t}'
@@ -23,11 +21,6 @@ class VmObject:
 
 
 def parse(class_config_json):
-    ipv4_subnet = "192.168.101"
-    ipv4_last_octet = 2
-    ssh_port = 2200
-
-    professor_ipv4 = ipv4_subnet + '.' + str(ipv4_last_octet)
     professor_hostname = 'p' + class_config_json['professor']['name'] + class_config_json['professor']['surname']
     # Create Vagrantfile header
     vfheader = 'Vagrant.configure(\"2\") do |config|\n'
@@ -36,14 +29,11 @@ def parse(class_config_json):
 
     p = VmObject(
         hostname=professor_hostname,
-        ip=professor_ipv4,
+        ip='#'+professor_hostname,
         bridge=class_config_json['bridge'],
-        ssh_port=ssh_port,
         box=class_config_json['vagrantbox'],
         lab=class_config_json['lab-config'])
     professors = professors + p.deparse()
-    ipv4_last_octet += 1
-    ssh_port += 1
 
     professors = professors + '\t]\n'
 
@@ -56,22 +46,19 @@ def parse(class_config_json):
     for student in class_config_json['students']:
         s = VmObject(
             hostname='s' + student['albumnr'],
-            ip=ipv4_subnet + '.' + str(ipv4_last_octet),
+            ip='#s' + student['albumnr'],
             bridge=class_config_json['bridge'],
-            ssh_port=ssh_port,
             box=class_config_json['vagrantbox'],
             lab=class_config_json['lab-config'])
         students = students + s.deparse()
-        ipv4_last_octet += 1
-        ssh_port += 1
 
         # Adding student info into professor .virtualabinfo
         student['ip'] = s.ip
         pvirtualabinfo['students'].append(student)
 
         # Saving student json into .virtualabinfo
-        student['professorip'] = professor_ipv4
-        output_file = open('data/virtualabinfo' + s.hostname, 'w')
+        student['professorip'] = '#' + professor_hostname
+        output_file = open('data/virtualabinfo/' + s.hostname, 'w')
         output_file.write(str({'student': student}).replace('\'', '\"'))
         output_file.close()
 

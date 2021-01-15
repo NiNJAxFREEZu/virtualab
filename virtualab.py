@@ -18,7 +18,6 @@ def create_class_config():
 
 def start_class(config_json):
     pvmname = vfp.parse(config_json)
-
     if platform.system() == 'Windows':
         os.system('dos2unix */*.sh')
         os.system('dos2unix data/*.c')
