@@ -2,8 +2,7 @@
         config.vm.define machine[:hostname] do |node|
             node.vm.box = machine[:box]
             node.vm.hostname = machine[:hostname]
-            node.vm.network :public_network, bridge: machine[:bridge], ip: machine[:ip]
-            node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
+            node.vm.network :public_network, bridge: machine[:bridge]
             node.vm.synced_folder "data/", "/home/vagrant/data", mount_options: ["dmode=775,fmode=777"]
             node.vm.synced_folder "Shared/", "/home/vagrant/Shared"
 
@@ -27,13 +26,12 @@
         config.vm.define machine[:hostname] do |node|
             node.vm.box = machine[:box]
             node.vm.hostname = machine[:hostname]
-            node.vm.network :public_network, bridge: machine[:bridge], ip: machine[:ip]
-            node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
+            node.vm.network :public_network, bridge: machine[:bridge]
             node.vm.synced_folder "data/", "/home/vagrant/data", mount_options: ["dmode=775,fmode=777"]
             node.vm.synced_folder "Shared/", "/home/vagrant/Shared"
 
             node.vm.provision "shell" do |install|
-            install.inline = "bash /home/vagrant/data/install.sh professor"
+                install.inline = "bash /home/vagrant/data/install.sh student"
                 end
 
             node.vm.provision "shell" do |lab_config|
