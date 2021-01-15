@@ -1,7 +1,7 @@
 #!/bin/bash
 
 touch /home/vagrant/data/machinefile
-sudo /home/vagrant/data/openmpi_prof_part2.py
+sudo /home/vagrant/data/mpi_prof_part2.py
 number_of_procs=$?
 #programik
 sudo cp /home/vagrant/data/mpi_hello.c /mirror/mpi_hello.c || exit 1

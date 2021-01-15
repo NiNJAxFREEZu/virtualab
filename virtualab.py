@@ -25,7 +25,7 @@ def start_class(config_json):
         os.system('dos2unix data/*.py')
 
     os.system("vagrant up")
-    os.system("vagrant ssh " + pvmname + " --command \"/home/vagrant/data/./openmpi_prof_part2.sh\"")  # todo
+    os.system("vagrant ssh " + pvmname + " --command \"/home/vagrant/data/./mpi_prof_part2.sh\"")  # todo
     print("Done")
 
 

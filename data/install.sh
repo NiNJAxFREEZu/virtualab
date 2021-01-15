@@ -76,10 +76,10 @@ fi
 echo -ne "\tInstalling OpenMPI..."
 if [ $1 = 'student' ]
 then
-  ./openmpi_student.sh || exit 1
+  ./mpi_student.sh || exit 1
 elif [ $1 = 'professor' ]
 then
-  ./openmpi_prof_part1.sh || exit 1
+  ./mpi_prof_part1.sh || exit 1
 fi
 echo " DONE"
 
