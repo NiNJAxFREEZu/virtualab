@@ -11,43 +11,46 @@ echo -e "██╗░░░██╗██╗██████╗░███�
 ░░╚██╔╝░░██║██║░░██║░░░██║░░░╚██████╔╝██║░░██║███████╗██║░░██║██████╦╝
 ░░░╚═╝░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░\n\n***Installing VirtuaLab***\n"
 
+# Declaring path variables
+HOME=/home/vagrant/
+DATA=/home/vagrant/data
+INFO=$DATA/virtualabinfo
+ADDR=$DATA/ipaddress
+
+echo -ne "\tPreparing to install VirtuaLab..."
+cd $DATA
 
 # Deleting autologin file
-echo -ne "\tDeleting autologin file..."
 rm /etc/lightdm/lightdm.conf.d/vagrant-autologin.conf
-echo " DONE"
 
 # Logging out vagrant user
-echo -ne "\tLogging out vagrant user..."
 kill -9 $(ps -dN | grep Xorg | awk '{print $1}')
-echo " DONE"
 
-# .virtualabinfo stem
-echo -ne "\tCopying .virtualabinfo..."
-cp /home/vagrant/data/virtualabinfo/$(hostname) /home/vagrant/.virtualabinfo
-echo " DONE"
+# Copying .virtualabinfo stem
+cp $INFO/$(hostname) $HOME/.virtualabinfo
 
 # Saving connection info
-echo -ne "\tSaving connection info..."
-ifconfig eth1 | grep 'inet ' | awk '{print $2}' > /home/vagrant/data/ipaddress/$(hostname)
-echo " DONE"
+ifconfig eth1 | grep 'inet ' | awk '{print $2}' > $ADDR/$(hostname)
+
+# Getting other user's connection info
+if [ $1 = 'student' ]
+then
+  ./fill-virtualabinfo.sh $HOME/.virtualabinfo
+fi
 
 # Updating the apt-get repository list
-echo -ne "\tUpdating apt-get repositories..."
 apt-get update --yes > /dev/null || exit 1
-echo " DONE"
 
-# Installing curl and git - needed to pull the rest of the dependencies and modules
-echo -ne "\tInstalling curl and git..."
-apt-get install curl git --yes > /dev/null || exit 1
-echo " DONE"
+# Installing git - needed to pull the rest of the dependencies and modules
+apt-get install git --yes > /dev/null || exit 1
 
 # Creating directory for storing modules data
 mkdir /etc/virtualab > /dev/null
 
+echo " DONE"
+
 ### Installing modules
 echo -e "\n***Installing modules***\n"
-cd /home/vagrant/data
 
 # RDP server
 echo -ne "\tInstalling RDP server..."
@@ -59,24 +62,24 @@ echo -ne "\tInstalling VM communicator..."
 ./vm-communicator.sh || exit 1
 
 # Adding a desktop entry for XFCE autostart
-mkdir /home/vagrant/.config/autostart
-cp /home/vagrant/data/vm-communicator.desktop /home/vagrant/.config/autostart/
+mkdir $HOME/.config/autostart
+cp $DATA/vm-communicator.desktop  $HOME/.config/autostart/
 echo " DONE"
 
 # Activity-monitor
 if [ $1 = 'student' ]
 then
-  cp /home/vagrant/data/activity-monitor.desktop /home/vagrant/.config/autostart/
+  cp $DATA/activity-monitor.desktop $HOME/.config/autostart/
 fi
 
 # Adding shortcuts to XFCE Desktop
-mkdir /home/vagrant/.local/share/applications
-cp /home/vagrant/data/mpiexec.desktop /home/vagrant/Desktop/
-cp /home/vagrant/data/text-chat.desktop /home/vagrant/Desktop/
+mkdir $HOME/.local/share/applications
+cp $DATA/mpiexec.desktop $HOME/Desktop/
+cp $DATA/text-chat.desktop $HOME/Desktop/
 
 if [ $1 = 'professor' ]
 then
-  cp /home/vagrant/data/professors-panel.desktop /home/vagrant/Desktop/
+  cp $DATA/professors-panel.desktop $HOME/Desktop/
 fi
 
 # OpenMPI module

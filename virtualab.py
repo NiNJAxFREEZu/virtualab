@@ -11,11 +11,6 @@ def print_manpage():
 
     print(manpage)
 
-
-def create_class_config():
-    print("TODO")
-
-
 def start_class(config_json):
     pvmname = vfp.parse(config_json)
     if platform.system() == 'Windows':
@@ -25,17 +20,13 @@ def start_class(config_json):
 
     os.system("vagrant up")
     os.system("vagrant ssh " + pvmname + " --command \"/home/vagrant/data/./finalize.sh\"")
-    print("Done")
-
+    print("VirtuaLab instance is now running!")
 
 if __name__ == "__main__":
     # Interpreting command line arguments
 
     if sys.argv[1] == "help":
         print_manpage()
-
-    elif sys.argv[1] == "create":
-        create_class_config()
 
     elif sys.argv[1] == "start":
         with open(sys.argv[2], 'r') as file:

@@ -4,7 +4,8 @@
 echo -ne "\tFinalizing virtualab cluster configuration..."
 cd /home/vagrant/data
 
-# TODO .virtualabinfo
+# Gathering student's ip addresses for .virtualabinfo
+/home/vagrant/data/./fill-virtualabinfo.sh /home/vagrant/.virtualabinfo
 
 # MPI
 ./mpi_prof_part2.sh || exit 1

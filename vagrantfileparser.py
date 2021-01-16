@@ -1,9 +1,8 @@
 import json
 
 class VmObject:
-    def __init__(self, hostname, ip, bridge, box, lab):
+    def __init__(self, hostname, bridge, box, lab):
         self.hostname = hostname.replace(' ', '')
-        self.ip = ip
         self.bridge = bridge
         self.box = box
         self.lab = lab
@@ -11,7 +10,6 @@ class VmObject:
     def deparse(self) -> str:
         output = '\t{'
         output = output + '\t\t:hostname => ' + '\"' + self.hostname + '\",\n'
-        output = output + '\t\t:ip => ' + '\"' + self.ip + '\",\n'
         output = output + '\t\t:bridge => ' + '\"' + self.bridge + '\",\n'
         output = output + '\t\t:box => ' + '\"' + self.box + '\",\n'
         output = output + '\t\t:lab => ' + '\"' + self.lab + '\"\n'
@@ -29,7 +27,6 @@ def parse(class_config_json):
 
     p = VmObject(
         hostname=professor_hostname,
-        ip='#'+professor_hostname,
         bridge=class_config_json['bridge'],
         box=class_config_json['vagrantbox'],
         lab=class_config_json['lab-config'])
@@ -39,6 +36,7 @@ def parse(class_config_json):
 
     # Creating professor's .virtualabinfo json
     pvirtualabinfo = json.loads(json.dumps(class_config_json['professor']))
+    pvirtualabinfo['ip'] = '#' + p.hostname
     pvirtualabinfo['students'] = []
     # Create Students array
     students = '\tstudents=[\n'
@@ -46,14 +44,13 @@ def parse(class_config_json):
     for student in class_config_json['students']:
         s = VmObject(
             hostname='s' + student['albumnr'],
-            ip='#s' + student['albumnr'],
             bridge=class_config_json['bridge'],
             box=class_config_json['vagrantbox'],
             lab=class_config_json['lab-config'])
         students = students + s.deparse()
 
         # Adding student info into professor .virtualabinfo
-        student['ip'] = s.ip
+        student['ip'] = '#' + s.hostname
         pvirtualabinfo['students'].append(student)
 
         # Saving student json into .virtualabinfo
