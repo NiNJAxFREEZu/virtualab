@@ -3,7 +3,7 @@
 sudo apt-get install mpich nfs-client openssh-server ssh-askpass hydra --yes
 
 #ip interfejsow do wpisania /etc/hosts do wpisania przy przejsciu na vagranta
-sudo /home/vagrant/data/add_to_hosts_student.py
+sudo /home/vagrant/data/executables/add_to_hosts_student.py
 #w ~home robię /mirror, folder share'owany przez nfs
 cd ~
 sudo mkdir /mirror

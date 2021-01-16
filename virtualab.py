@@ -19,7 +19,7 @@ def start_class(config_json):
         os.system('dos2unix data/*.py')
 
     os.system("vagrant up")
-    os.system("vagrant ssh " + pvmname + " --command \"/home/vagrant/data/./finalize.sh\"")
+    os.system("vagrant ssh " + pvmname + " --command \"/home/vagrant/data/executables/./finalize.sh\"")
     print("VirtuaLab instance is now running!")
 
 if __name__ == "__main__":

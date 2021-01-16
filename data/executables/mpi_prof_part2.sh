@@ -1,16 +1,16 @@
 #!/bin/bash
 
 touch /home/vagrant/data/machinefile
-sudo /home/vagrant/data/mpi_prof_part2.py
+sudo /home/vagrant/data/executables/mpi_prof_part2.py
 number_of_procs=$?
 #programik
-sudo cp /home/vagrant/data/mpi_hello.c /mirror/mpi_hello.c || exit 1
+sudo cp /home/vagrant/data/executables/mpi_hello.c /mirror/mpi_hello.c || exit 1
 sudo cp /home/vagrant/data/machinefile /mirror/machinefile || exit 1
-sudo cp /home/vagrant/data/executempi.sh /mirror/executempi.sh || exit 1
+sudo cp /home/vagrant/data/executables/executempi.sh /mirror/executempi.sh || exit 1
+sudo cp /home/vagrant/data/executables/executempiwrapper.sh /mirror/executempiwrapper.sh || exit 1
 
 cd /mirror || exit 1
-#lecimy z koksem
-sudo chmod +x executempi.sh
+sudo chmod +x *.sh
 echo "**** MPI CAN NOW BE USED ****"
 echo "**** USE executempi.sh to run mpi programms ****"
 echo "**** RUNNING EXAMPLE PROGRAM ****"

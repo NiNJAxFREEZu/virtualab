@@ -14,6 +14,9 @@ echo -e "██╗░░░██╗██╗██████╗░███�
 # Declaring path variables
 HOME=/home/vagrant/
 DATA=/home/vagrant/data
+
+DE=$DATA/desktop
+EXECUTABLES=$DATA/executables
 INFO=$DATA/virtualabinfo
 ADDR=$DATA/ipaddress
 
@@ -35,7 +38,7 @@ ifconfig eth1 | grep 'inet ' | awk '{print $2}' > $ADDR/$(hostname)
 # Getting other user's connection info
 if [ $1 = 'student' ]
 then
-  ./fill-virtualabinfo.sh $HOME/.virtualabinfo
+  $EXECUTABLES/./fill-virtualabinfo.sh $HOME/.virtualabinfo
 fi
 
 # Updating the apt-get repository list
@@ -54,42 +57,45 @@ echo -e "\n***Installing modules***\n"
 
 # RDP server
 echo -ne "\tInstalling RDP server..."
-./rdp.sh || exit 1
+$EXECUTABLES/./rdp.sh || exit 1
 echo " DONE"
 
 # VM-communicator
 echo -ne "\tInstalling VM communicator..."
-./vm-communicator.sh || exit 1
+$EXECUTABLES/./vm-communicator.sh || exit 1
 
 # Adding a desktop entry for XFCE autostart
 mkdir $HOME/.config/autostart
-cp $DATA/vm-communicator.desktop  $HOME/.config/autostart/
-echo " DONE"
+cp $DE/vm-communicator.desktop  $HOME/.config/autostart/
 
 # Activity-monitor
 if [ $1 = 'student' ]
 then
-  cp $DATA/activity-monitor.desktop $HOME/.config/autostart/
+  cp $DE/activity-monitor.desktop $HOME/.config/autostart/
 fi
 
 # Adding shortcuts to XFCE Desktop
 mkdir $HOME/.local/share/applications
-cp $DATA/mpiexec.desktop $HOME/Desktop/
-cp $DATA/text-chat.desktop $HOME/Desktop/
+cp $DE/text-chat.desktop $HOME/Desktop/
 
 if [ $1 = 'professor' ]
 then
-  cp $DATA/professors-panel.desktop $HOME/Desktop/
+  cp $DE/professors-panel.desktop $HOME/Desktop/
+  cp $DE/mpiexec.desktop $HOME/Desktop/
 fi
 
+echo " DONE"
+
 # OpenMPI module
-echo -ne "\tInstalling OpenMPI..."
+echo -ne "\tInstalling MPI..."
+mkdir
+
 if [ $1 = 'student' ]
 then
-  ./mpi_student.sh || exit 1
+  $EXECUTABLES/./mpi_student.sh || exit 1
 elif [ $1 = 'professor' ]
 then
-  ./mpi_prof_part1.sh || exit 1
+  $EXECUTABLES/./mpi_prof_part1.sh || exit 1
 fi
 echo " DONE"
 
