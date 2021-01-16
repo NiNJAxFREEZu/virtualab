@@ -11,16 +11,19 @@ def print_manpage():
 
     print(manpage)
 
+
 def start_class(config_json):
     pvmname = vfp.parse(config_json)
     if platform.system() == 'Windows':
         os.system('dos2unix */*.sh')
-        os.system('dos2unix data/*.c')
-        os.system('dos2unix data/*.py')
+        os.system('dos2unix */*/*.sh')
+        os.system('dos2unix data/executables/*.c')
+        os.system('dos2unix data/executables/*.py')
 
     os.system("vagrant up")
     os.system("vagrant ssh " + pvmname + " --command \"/home/vagrant/data/executables/./finalize.sh\"")
     print("VirtuaLab instance is now running!")
+
 
 if __name__ == "__main__":
     # Interpreting command line arguments
