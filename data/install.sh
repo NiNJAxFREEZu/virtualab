@@ -75,7 +75,6 @@ then
 fi
 
 # Adding shortcuts to XFCE Desktop
-mkdir $HOME/.local/share/applications
 cp $DE/text-chat.desktop $HOME/Desktop/
 
 if [ $1 = 'professor' ]
