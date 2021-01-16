@@ -6,10 +6,11 @@ import os
 
 if __name__ == "__main__":
     json_info = {}
-    machinefile = "master:2 \n"
+    machinefile = "master:1 \n"
     machine_counter = 1
     echo_command = 'sudo echo "{}    {}" >> /etc/hosts'
-
+    known_hosts_command = 'sudo -H -u mpiuser bash -c "ssh-keyscan s{} >> /mirror/.ssh/known_hosts"'
+    
     os.system('cd ~')
     with open('/home/vagrant/.virtualabinfo', 'r') as file:
         json_info_raw = file.read()
@@ -27,7 +28,8 @@ if __name__ == "__main__":
                 sys.stderr.write("Failed to write student IP to /etc/hosts")
                 exit(1)
             try:
-                os.system('sudo -H -u mpiuser bash -c "ssh-keyscan ' + student["ip"] + ' >> /mirror/.ssh/known_hosts"')
+                os.system(known_hosts_command.format(student["albumnr"]))
+                sys.stdout.write("executed command: " + known_hosts_command.format(student["albumnr"]))
             except Exception as e2:
                 sys.stderr.write("Failed to write student SSH key to /mirror/.ssh/known_hosts")
                 exit(1)

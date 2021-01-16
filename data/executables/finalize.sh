@@ -8,6 +8,6 @@ cd /home/vagrant/data/executables
 ./fill-virtualabinfo.sh /home/vagrant/.virtualabinfo
 
 # MPI
-./mpi_prof_part2.sh || exit 1
+sudo ./mpi_prof_part2.sh || exit 1
 
 echo " DONE"
