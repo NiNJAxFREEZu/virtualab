@@ -19,7 +19,7 @@ if __name__ == "__main__":
         exit(1)
 
     try:
-        os.system(echo_command.format(json_info["student"]["profesorip"], "master"))
+        os.system(echo_command.format(json_info["student"]["professorip"], "master"))
     except Exception as e2:
         sys.stderr.write("Error writing to /etc/hosts")
         exit(1)
