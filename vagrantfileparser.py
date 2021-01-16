@@ -13,7 +13,7 @@ class VmObject:
         output = output + '\t\t:bridge => ' + '\"' + self.bridge + '\",\n'
         output = output + '\t\t:box => ' + '\"' + self.box + '\",\n'
         output = output + '\t\t:lab => ' + '\"' + self.lab + '\"\n'
-        output = output + '\t}'
+        output = output + '\t},'
 
         return output
 
@@ -32,7 +32,7 @@ def parse(class_config_json):
         lab=class_config_json['lab-config'])
     professors = professors + p.deparse()
 
-    professors = professors + '\t]\n'
+    professors = professors[:-1] + '\t]\n'
 
     # Creating professor's .virtualabinfo json
     pvirtualabinfo = json.loads(json.dumps(class_config_json['professor']))
@@ -59,7 +59,7 @@ def parse(class_config_json):
         output_file.write(str({'student': student}).replace('\'', '\"'))
         output_file.close()
 
-    students = students + '\t]\n'
+    students = students[:-1] + '\t]\n'
 
     # Creating professors .virtualabinfo
     pvirtualabinfo = {'professor': pvirtualabinfo}

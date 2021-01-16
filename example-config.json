@@ -14,6 +14,24 @@
         "surname": "Borysiewicz",
         "albumnr": "136218",
         "email": "name.surname@student.put.poznan.pl"
+    },
+	{
+        "name": "Piotr",
+        "surname": "Zieliński",
+        "albumnr": "136333",
+        "email": "name.surname2@student.put.poznan.pl"
+    },
+	{
+        "name": "Patryk",
+        "surname": "Baryła",
+        "albumnr": "136216",
+        "email": "name.surname3@student.put.poznan.pl"
+    },
+	{
+        "name": "Szymon",
+        "surname": "Wasilewski",
+        "albumnr": "136323",
+        "email": "name.surname4@student.put.poznan.pl"
     }
     ]
 }

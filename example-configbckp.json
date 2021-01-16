@@ -1,0 +1,19 @@
+{
+    "vagrantbox": "socialwifi/ubuntu-gui",
+    "lab-config": "class-specific-config/jfik.sh",
+    "bridge": "wlan0",
+
+    "professor": {
+        "name": "Krzysztof",
+        "surname": "Zwierzynski",
+        "email": "name.surname@put.poznan.pl"
+    },
+
+    "students": [{
+        "name": "Marcin",
+        "surname": "Borysiewicz",
+        "albumnr": "136218",
+        "email": "name.surname@student.put.poznan.pl"
+    }
+    ]
+}
