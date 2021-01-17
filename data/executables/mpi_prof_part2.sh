@@ -13,6 +13,7 @@ cd /mirror || exit 1
 sudo chmod +x *.sh
 echo "**** MPI CAN NOW BE USED ****"
 echo "**** USE executempi.sh to run mpi programms ****"
-echo "**** RUNNING EXAMPLE PROGRAM ****"
 echo "**** AT LEAST $number_of_procs PROCESSORS ARE AVAILABLE ****"
+
+echo "**** RUNNING EXAMPLE PROGRAM ****"
 sudo ./executempi.sh mpi_hello.c mpi_hello $number_of_procs

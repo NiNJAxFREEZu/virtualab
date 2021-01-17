@@ -29,7 +29,7 @@ if __name__ == "__main__":
                 exit(1)
             try:
                 os.system(known_hosts_command.format(student["albumnr"]))
-                sys.stdout.write("executed command: " + known_hosts_command.format(student["albumnr"]))
+                sys.stdout.write("executed command: " + known_hosts_command.format(student["albumnr"]) + "\n")
             except Exception as e2:
                 sys.stderr.write("Failed to write student SSH key to /mirror/.ssh/known_hosts")
                 exit(1)

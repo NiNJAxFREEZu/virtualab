@@ -3,7 +3,7 @@ import os
 import json
 import vagrantfileparser as vfp
 import platform
-
+import time
 
 def print_manpage():
     with open("manpage", 'r') as manpage_file:
@@ -27,7 +27,7 @@ def start_class(config_json):
 
 if __name__ == "__main__":
     # Interpreting command line arguments
-
+    start = time.time()
     if sys.argv[1] == "help":
         print_manpage()
 
@@ -42,6 +42,8 @@ if __name__ == "__main__":
             exit(1)
 
         start_class(class_config_json)
+        end = time.time()
+        sys.stdout.write("Time elapsed (in seconds): " + str((end - start)))
 
     elif sys.argv[1] == "stop":
         os.system("vagrant destroy -f")
