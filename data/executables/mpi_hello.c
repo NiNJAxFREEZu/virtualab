@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
 
     gethostname(hostname, HOST_NAME_MAX + 1);
-    printf("Hello from processor %d of %d (node: %sn)\n", myrank, nprocs, hostname);
+    printf("Hello from processor %d of %d (node: %s)\n", myrank, nprocs, hostname);
 
     MPI_Finalize();
     return 0;
