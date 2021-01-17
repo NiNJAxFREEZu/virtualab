@@ -12,7 +12,7 @@ sudo cp /home/vagrant/data/executables/executempiwrapper.sh /mirror/executempiwr
 cd /mirror || exit 1
 sudo chmod +x *.sh
 echo "**** MPI CAN NOW BE USED ****"
-echo "**** USE executempi.sh to run mpi programms ****"
+echo "**** USE executempi.sh or shortcut on desktop to run mpi programms ****"
 echo "**** AT LEAST $number_of_procs PROCESSORS ARE AVAILABLE ****"
 
 echo "**** RUNNING EXAMPLE PROGRAM ****"
