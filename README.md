@@ -1,4 +1,2 @@
-# inz-scripts
-Zestaw skryptów pozwalających na automatyczną konfigurację maszyny wirtualnej do laboratorium.
-
-[VirtuaLab Site](http://www.vmlab.ninjait.pl)
+# VirtuaLab
+System for conducting remote classes using virtual machines.
