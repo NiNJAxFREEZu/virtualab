@@ -4,33 +4,33 @@
     "bridge": "wlan0",
 
     "professor": {
-        "name": "Krzysztof",
-        "surname": "Zwierzynski",
+        "name": "Piotr",
+        "surname": "Kowalski",
         "email": "name.surname@put.poznan.pl"
     },
 
     "students": [{
-        "name": "Marcin",
-        "surname": "Borysiewicz",
-        "albumnr": "136218",
+        "name": "Jan",
+        "surname": "Kowalski",
+        "albumnr": "111111",
         "email": "name.surname@student.put.poznan.pl"
     },
 	{
-        "name": "Piotr",
-        "surname": "Zieliński",
-        "albumnr": "136333",
+        "name": "Jan",
+        "surname": "Nowak",
+        "albumnr": "222222",
         "email": "name.surname2@student.put.poznan.pl"
     },
 	{
-        "name": "Patryk",
-        "surname": "Baryła",
-        "albumnr": "136216",
+        "name": "Jan",
+        "surname": "Kaczmarek",
+        "albumnr": "333333",
         "email": "name.surname3@student.put.poznan.pl"
     },
 	{
-        "name": "Szymon",
-        "surname": "Wasilewski",
-        "albumnr": "136323",
+        "name": "Janina",
+        "surname": "Nowask",
+        "albumnr": "444444",
         "email": "name.surname4@student.put.poznan.pl"
     }
     ]
