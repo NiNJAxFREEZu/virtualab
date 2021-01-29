@@ -13,4 +13,4 @@ System for conducting remote classes using virtual machines.
 ```bash
 $ python virtualab.py [OPTIONS]
 ```
-Issue ```$ python virtualab.py help``` for available commands.
+Issue ```python virtualab.py help``` for available commands.
