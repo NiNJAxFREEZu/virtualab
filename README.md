@@ -11,6 +11,6 @@ System for conducting remote classes using virtual machines.
 
 ## How to run?
 ```bash
-python virtualab.py [OPTIONS]
+$ python virtualab.py [OPTIONS]
 ```
-Issue ```bash python virtualab.py help``` for available commands.
+Issue ```$ python virtualab.py help``` for available commands.
