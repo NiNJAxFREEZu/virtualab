@@ -8,3 +8,9 @@ System for conducting remote classes using virtual machines.
 - *Vagrant*
 - *VirtualBox*
 - Minimum of 1 core and 1GiB of RAM for each virtual machine
+
+## How to run?
+```bash
+python virtualab.py [OPTIONS]
+```
+Issue ```bash python virtualab.py help``` for available commands.
