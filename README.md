@@ -14,6 +14,6 @@ VirtuaLab sets up a cluster of virtual machines running Xubuntu in a bridged net
 
 ## How to run?
 ```bash
-$ python virtualab.py [OPTIONS]
+$ python virtualab.py [COMMAND] {OPTIONS}
 ```
 Issue ```python virtualab.py help``` for available commands.
