@@ -1,3 +1,5 @@
+#!/bin/python
+
 import sys
 import os
 import json
@@ -49,5 +51,6 @@ if __name__ == "__main__":
         os.system("vagrant destroy -f")
 
     else:
-        sys.stderr.write("\'" + sys.argv[1] + "\' is not a valid virtualab command. See \'virtualab help.\'\n")
+        sys.stderr.write("\'" + sys.argv[1] + "\' is not a valid virtualab command\n")
+        print_manpage()
         exit(1)
