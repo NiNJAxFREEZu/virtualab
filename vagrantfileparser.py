@@ -1,16 +1,15 @@
 import json
 
 class VmObject:
-    def __init__(self, hostname, bridge, box, lab):
+    def __init__(self, hostname, bridge, lab):
         self.hostname = hostname.replace(' ', '')
         self.bridge = bridge
-        self.box = box
         self.lab = lab
 
     def deparse(self) -> str:
         output = '\t{'
+        output = output + '\t\t:hostname => ' + '\"' + self.hostname + '\",\n'
         output = output + '\t\t:bridge => ' + '\"' + self.bridge + '\",\n'
-        output = output + '\t\t:box => ' + '\"' + self.box + '\",\n'
         output = output + '\t\t:lab => ' + '\"' + self.lab + '\"\n'
         output = output + '\t},'
 
@@ -18,13 +17,11 @@ class VmObject:
 
 
 def parse(class_config_json):
-    # Reading vagrantbox name
-    vagrantbox = bridge=class_config_json['vagrantbox'],
-
+    vagrantbox = class_config_json['vagrantbox']
     professor_hostname = 'p' + class_config_json['professor']['name'] + class_config_json['professor']['surname']
+
     # Create Vagrantfile header
-    vfheader = 'Vagrant.configure(\"2\") do |config|\n' +
-    'vagrantbox=' + vagrantbox
+    vfheader = 'Vagrant.configure(\"2\") do |config|\nvagrantbox=\"' + str(vagrantbox) + '\"\n'
     # Create Professors array
     professors = '\tprofessors=[\n'
 
@@ -73,6 +70,6 @@ def parse(class_config_json):
         vffooter = f.read()
 
     output_file = open("Vagrantfile", "w")
-    output_file.write(vfheader + professors + students + vffooter)
+    output_file.write(vfheader + '\n' + professors + '\n' + students + '\n' + vffooter)
     output_file.close()
     return professor_hostname

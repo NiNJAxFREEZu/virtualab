@@ -1,5 +1,5 @@
 {
-    "vagrantbox": "virtualab",
+    "vagrantbox": "ninjaxfreezu/virtualab",
     "lab-config": "class-specific-config/jfik.sh",
     "bridge": "enp80s",
 
