@@ -1,7 +1,7 @@
 {
-    "vagrantbox": "socialwifi/ubuntu-gui",
+    "vagrantbox": "virtualab",
     "lab-config": "class-specific-config/jfik.sh",
-    "bridge": "wlan0",
+    "bridge": "enp80s",
 
     "professor": {
         "name": "Piotr",

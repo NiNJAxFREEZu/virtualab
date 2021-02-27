@@ -4,6 +4,7 @@ import json
 import vagrantfileparser as vfp
 import platform
 import time
+import argparse
 
 def print_manpage():
     with open("manpage", 'r') as manpage_file:
@@ -24,8 +25,21 @@ def start_class(config_json):
     os.system("vagrant ssh " + pvmname + " --command \"/home/vagrant/data/executables/./finalize.sh\"")
     print("VirtuaLab instance is now running!")
 
+def stop_class():
+    os.system("vagrant destroy --force")
+
 
 if __name__ == "__main__":
+    # Adding command line arguments
+    # parser = argparse.ArgumentParser()
+
+    #parser.add_argument('name', help='name of user')
+    #parser.add_argument('-g', '--greeting', default='Hello', help='optional alternate greeting')
+
+    #args = parser.parse_args()
+
+    #print("{greeting}, {name}!".format(greeting=args.greeting,name=args.name))
+
     # Interpreting command line arguments
     start = time.time()
     if sys.argv[1] == "help":
@@ -46,7 +60,7 @@ if __name__ == "__main__":
         sys.stdout.write("Time elapsed (in seconds): " + str((end - start)))
 
     elif sys.argv[1] == "stop":
-        os.system("vagrant destroy -f")
+        stop_class()
 
     else:
         sys.stderr.write("\'" + sys.argv[1] + "\' is not a valid virtualab command. See \'virtualab help.\'\n")
