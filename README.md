@@ -2,7 +2,7 @@
 System for conducting remote classes using virtual machines.
 
 # How it works?
-VirtuaLab sets up a cluster of virtual machines running Xubuntu in a bridged network. These machines come with additional utilities such as text chat, activity monitor, attendance check and integrated MPI computing module. Additionaly, each virtual machine can be accessed via RDP client thanks to preinstaled RDP server.
+VirtuaLab sets up a cluster of virtual machines running custom Ubuntu image in a bridged network. These machines come with additional utilities such as text chat, activity monitor, attendance check and integrated MPI computing module. Additionaly, each virtual machine can be accessed via RDP client thanks to preinstaled RDP server.
 
 ## System requirements:
 - OS: *Windows* or *GNU/Linux* (*OSX* is to be tested)
