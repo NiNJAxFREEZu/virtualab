@@ -14,6 +14,6 @@ VirtuaLab sets up a cluster of virtual machines running custom Ubuntu image in a
 
 ## How to run?
 ```bash
-$ python virtualab.py [COMMAND] {OPTIONS}
+$ python virtualab.py {COMMAND} {OPTIONS}
 ```
 Issue ```python virtualab.py help``` for available commands.
